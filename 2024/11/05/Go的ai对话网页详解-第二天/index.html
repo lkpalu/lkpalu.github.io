@@ -19,26 +19,23 @@
     
     <!--- Seo Part-->
     
-    <link rel="canonical" href="http://example.com/2024/11/04/go的ai对话网页详解-第一天/"/>
+    <link rel="canonical" href="http://example.com/2024/11/05/go的ai对话网页详解-第二天/"/>
     <meta name="robots" content="index,follow">
     <meta name="googlebot" content="index,follow">
     <meta name="revisit-after" content="1 days">
     
-        <meta name="description" content="Go ai对话网页本项目初期采用Gin框架，现在开源的项目中已采用了我自己写的Gwe框架，仿照了Gin的方法名称，可以一键切换。 项目目录采用GitHub开源的https:&#x2F;&#x2F;github.com&#x2F;golang-standards&#x2F;project-layout&#x2F;blob&#x2F;master&#x2F;README_zh.md   ai问答网页 其实就是一个比较简单的后端服务，前端传过来的消息经过后端处理成模型需要">
+        <meta name="description" content="第二天 – Dochat回调函数详解先把函数贴上来 1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950func (this *Chat) Dochat(c *gin.Context) &#123;    var body model.Chat    err :&#x3D; c.">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Go的ai对话网页详解-第一天">
-<meta property="og:url" content="http://example.com/2024/11/04/Go%E7%9A%84ai%E5%AF%B9%E8%AF%9D%E7%BD%91%E9%A1%B5%E8%AF%A6%E8%A7%A3-%E7%AC%AC%E4%B8%80%E5%A4%A9/index.html">
+<meta property="og:title" content="Go的ai对话网页详解-第二天">
+<meta property="og:url" content="http://example.com/2024/11/05/Go%E7%9A%84ai%E5%AF%B9%E8%AF%9D%E7%BD%91%E9%A1%B5%E8%AF%A6%E8%A7%A3-%E7%AC%AC%E4%BA%8C%E5%A4%A9/index.html">
 <meta property="og:site_name" content="Blog">
-<meta property="og:description" content="Go ai对话网页本项目初期采用Gin框架，现在开源的项目中已采用了我自己写的Gwe框架，仿照了Gin的方法名称，可以一键切换。 项目目录采用GitHub开源的https:&#x2F;&#x2F;github.com&#x2F;golang-standards&#x2F;project-layout&#x2F;blob&#x2F;master&#x2F;README_zh.md   ai问答网页 其实就是一个比较简单的后端服务，前端传过来的消息经过后端处理成模型需要">
+<meta property="og:description" content="第二天 – Dochat回调函数详解先把函数贴上来 1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950func (this *Chat) Dochat(c *gin.Context) &#123;    var body model.Chat    err :&#x3D; c.">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="http://example.com/images/%E9%A1%B9%E7%9B%AE%E7%9B%AE%E5%BD%95.png">
-<meta property="og:image" content="http://example.com/images/internal.png">
-<meta property="article:published_time" content="2024-11-04T09:09:00.000Z">
-<meta property="article:modified_time" content="2024-11-05T09:52:02.052Z">
+<meta property="article:published_time" content="2024-11-05T04:29:15.000Z">
+<meta property="article:modified_time" content="2024-11-06T04:48:52.618Z">
 <meta property="article:author" content="lkpalu">
 <meta property="article:tag" content="Go">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="http://example.com/images/%E9%A1%B9%E7%9B%AE%E7%9B%AE%E5%BD%95.png">
     
     
     <!--- Icon Part-->
@@ -50,7 +47,7 @@
     
     <title>
         
-            Go的ai对话网页详解-第一天 | lkpalu 个人博客
+            Go的ai对话网页详解-第二天 | lkpalu 个人博客
         
     </title>
 
@@ -236,7 +233,7 @@
         <div class="article-title relative w-full">
             
                 <div class="w-full flex items-center pt-6 justify-start">
-                    <h1 class="article-title-regular text-second-text-color tracking-tight text-4xl md:text-6xl font-semibold px-2 sm:px-6 md:px-8 py-3">Go的ai对话网页详解-第一天</h1>
+                    <h1 class="article-title-regular text-second-text-color tracking-tight text-4xl md:text-6xl font-semibold px-2 sm:px-6 md:px-8 py-3">Go的ai对话网页详解-第二天</h1>
                 </div>
             
             </div>
@@ -257,15 +254,15 @@
                         <div class="article-meta-info">
     <span class="article-date article-meta-item">
         <i class="fa-regular fa-pen-fancy"></i>&nbsp;
-        <span class="desktop">2024-11-04 17:09</span>
-        <span class="mobile">2024-11-04 17:09</span>
+        <span class="desktop">2024-11-05 12:29:15</span>
+        <span class="mobile">2024-11-05 12:29:15</span>
         <span class="hover-info">创建</span>
     </span>
     
         <span class="article-date article-meta-item">
             <i class="fa-regular fa-wrench"></i>&nbsp;
-            <span class="desktop">2024-11-05 17:52:02</span>
-            <span class="mobile">2024-11-05 17:52:02</span>
+            <span class="desktop">2024-11-06 12:48:52</span>
+            <span class="mobile">2024-11-06 12:48:52</span>
             <span class="hover-info">更新</span>
         </span>
     
@@ -319,34 +316,32 @@
 
 
         <div class="article-content markdown-body px-2 sm:px-6 md:px-8 pb-8">
-            <h1 id="Go-ai对话网页"><a href="#Go-ai对话网页" class="headerlink" title="Go ai对话网页"></a>Go ai对话网页</h1><p>本项目初期采用Gin框架，现在开源的项目中已采用了我自己写的Gwe框架，仿照了Gin的方法名称，可以一键切换。</p>
-<p>项目目录采用GitHub开源的<a class="link"   target="_blank" rel="noopener" href="https://github.com/golang-standards/project-layout/blob/master/README_zh.md" >https://github.com/golang-standards/project-layout/blob/master/README_zh.md <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></p>
-<p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="/images/%E9%A1%B9%E7%9B%AE%E7%9B%AE%E5%BD%95.png"
-                      alt="项目目录"
-                ></p>
-<h4 id="ai问答网页-其实就是一个比较简单的后端服务，前端传过来的消息经过后端处理成模型需要的输入格式再传给模型，接收模型返回的对话，前端显示即可。"><a href="#ai问答网页-其实就是一个比较简单的后端服务，前端传过来的消息经过后端处理成模型需要的输入格式再传给模型，接收模型返回的对话，前端显示即可。" class="headerlink" title="ai问答网页 其实就是一个比较简单的后端服务，前端传过来的消息经过后端处理成模型需要的输入格式再传给模型，接收模型返回的对话，前端显示即可。"></a>ai问答网页 其实就是一个比较简单的后端服务，前端传过来的消息经过后端处理成模型需要的输入格式再传给模型，接收模型返回的对话，前端显示即可。</h4><h2 id="前置条件"><a href="#前置条件" class="headerlink" title="前置条件"></a>前置条件</h2><p>采用ollama部署大模型模型，请提前下载ollama以及工具链langchaingo</p>
-<div class="highlight-container" data-rel="Shell"><figure class="iseeu highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">go install github.com/tmc/langchaingo/llms@latest</span><br></pre></td></tr></table></figure></div>
-
-<p>前置操作需要安装gin框架，后续不用，也可使用原生的net&#x2F;http进行操作</p>
-<p>最后的main.go文件中其实只有短短几行</p>
-<div class="highlight-container" data-rel="Go"><figure class="iseeu highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> main</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> (</span><br><span class="line">    <span class="string">&quot;ai_web/internal/middleware&quot;</span></span><br><span class="line">    <span class="comment">//&quot;github.com/gin-gonic/gin&quot;</span></span><br><span class="line">    gin <span class="string">&quot;ai_web/Gwe/Gwe&quot;</span></span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">    r := gin.New()</span><br><span class="line"></span><br><span class="line">    <span class="comment">//r.Use(middleware.Cors())</span></span><br><span class="line">    r.Use(middleware.Router(r))</span><br><span class="line">    err := r.Run(<span class="string">&quot;:8080&quot;</span>)</span><br><span class="line">    <span class="keyword">if</span> err != <span class="literal">nil</span> &#123;</span><br><span class="line">       <span class="built_in">panic</span>(err)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+            <h1 id="第二天-–-Dochat回调函数详解"><a href="#第二天-–-Dochat回调函数详解" class="headerlink" title="第二天 – Dochat回调函数详解"></a>第二天 – Dochat回调函数详解</h1><p>先把函数贴上来</p>
+<div class="highlight-container" data-rel="Go"><figure class="iseeu highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(this *Chat)</span></span> Dochat(c *gin.Context) &#123;</span><br><span class="line">    <span class="keyword">var</span> body model.Chat</span><br><span class="line">    err := c.ShouldBindJSON(&amp;body)</span><br><span class="line">    <span class="comment">//fmt.Println(body.Text)</span></span><br><span class="line">    <span class="keyword">if</span> err != <span class="literal">nil</span> &#123;</span><br><span class="line">       c.JSON(http.StatusBadRequest, gin.H&#123;</span><br><span class="line">          <span class="string">&quot;msg&quot;</span>: err.Error(),</span><br><span class="line">       &#125;)</span><br><span class="line">       <span class="keyword">return</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">//open, err := sql.Open(&quot;sqlite3&quot;, &quot;C:\\Users\\lkpalu\\GolandProjects\\ai_web\\internal\\SQL\\message.db&quot;)</span></span><br><span class="line">    <span class="comment">//if err != nil &#123;</span></span><br><span class="line">    <span class="comment">// log.Println(&quot;打开数据库失败&quot;)</span></span><br><span class="line">    <span class="comment">//&#125;</span></span><br><span class="line">    <span class="comment">//defer open.Close()</span></span><br><span class="line">    <span class="comment">//_, err = open.Exec(&quot;INSERT INTO messages(name,time,text) VALUES (?,?,?)&quot;, user.U.Name, time.Now(), body.Text)</span></span><br><span class="line">    prompt := util.CreatePrompt()</span><br><span class="line"></span><br><span class="line">    data := <span class="keyword">map</span>[<span class="type">string</span>]any&#123;</span><br><span class="line">       <span class="string">&quot;text&quot;</span>: body.Text,</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    messages, err := prompt.FormatMessages(data)</span><br><span class="line">    <span class="keyword">if</span> err != <span class="literal">nil</span> &#123;</span><br><span class="line">       c.JSON(http.StatusBadRequest, gin.H&#123;</span><br><span class="line">          <span class="string">&quot;msg&quot;</span>: err.Error(),</span><br><span class="line">       &#125;)</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//fmt.Println(messages)</span></span><br><span class="line">    contents := []llms.MessageContent&#123;</span><br><span class="line">       llms.TextParts(messages[<span class="number">0</span>].GetType(), messages[<span class="number">0</span>].GetContent()),</span><br><span class="line">       llms.TextParts(messages[<span class="number">1</span>].GetType(), messages[<span class="number">1</span>].GetContent()),</span><br><span class="line">    &#125;</span><br><span class="line">    llm := util.CteateModel(c, <span class="string">&quot;qwen&quot;</span>)</span><br><span class="line">    resp, err := llm.GenerateContent(context.Background(), contents)</span><br><span class="line">    <span class="keyword">if</span> err != <span class="literal">nil</span> &#123;</span><br><span class="line">       c.JSON(http.StatusBadRequest, gin.H&#123;</span><br><span class="line">          <span class="string">&quot;msg&quot;</span>: err.Error(),</span><br><span class="line">       &#125;)</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    c.JSON(http.StatusOK, gin.H&#123;</span><br><span class="line">       <span class="string">&quot;code&quot;</span>: <span class="number">0</span>,</span><br><span class="line">       <span class="string">&quot;msg&quot;</span>:  <span class="string">&quot;ok&quot;</span>,</span><br><span class="line">       <span class="string">&quot;data&quot;</span>: resp.Choices[<span class="number">0</span>].Content,</span><br><span class="line">    &#125;)</span><br><span class="line">    <span class="comment">//fmt.Println(resp.Choices[0].Content)</span></span><br><span class="line">    <span class="comment">//_, err = open.Exec(&quot;INSERT INTO messages(name,time,text) VALUES (?,?,?)&quot;, &quot;AI&quot;, time.Now(), resp.Choices[0].Content)</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
 
 
 
-<p>这里使用gin初始化了一个不带log和recovery的引擎，之后加入两个中间件，跨域和路由，最后开启服务即可，我这里把跨越中间件注释掉主要是因为我是在本地测试的，好像是不需要这个，不是很懂。</p>
-<p>internal目录结构如下</p>
-<p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="/images/internal.png"
-                      alt="internal"
-                ></p>
-<div class="highlight-container" data-rel="Go"><figure class="iseeu highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> middleware</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> (</span><br><span class="line">    gin <span class="string">&quot;ai_web/Gwe/Gwe&quot;</span></span><br><span class="line">    <span class="string">&quot;ai_web/internal/controller&quot;</span></span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">Router</span><span class="params">(r *gin.Engine)</span></span> gin.HandlerFunc &#123;</span><br><span class="line"></span><br><span class="line">    chat := controller.Chat&#123;&#125;</span><br><span class="line">    mainGroup := r.Group(<span class="string">&quot;/&quot;</span>)</span><br><span class="line">    <span class="keyword">return</span> <span class="function"><span class="keyword">func</span><span class="params">(c *gin.Context)</span></span> &#123;</span><br><span class="line">       mainGroup.POST(<span class="string">&quot;/chat&quot;</span>, chat.Dochat)</span><br><span class="line">       <span class="comment">//mainGroup.POST(&quot;/login&quot;, Nuser.Login)</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+<h4 id="函数逻辑"><a href="#函数逻辑" class="headerlink" title="函数逻辑"></a>函数逻辑</h4><p>这个函数中就是对于前端的json接收以及处理的一个过程，一开始的ShouldBindJSON方法让前端</p>
+<p><code>&#123;</code></p>
+<p>​	<code>“text” : messages</code></p>
+<p><code>&#125;</code></p>
+<p>绑定到结构体中，结构体格式如下</p>
+<div class="highlight-container" data-rel="Go"><figure class="iseeu highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">type</span> Chat <span class="keyword">struct</span> &#123;</span><br><span class="line">    Text <span class="type">string</span> <span class="string">`json:&quot;text&quot;`</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
 
-<p>路由的逻辑很简单，就是在&#x2F;chat路径上起个路由就好了，这里遵循Restful API的风格，使用POST请求，具体Dochat的细节等第二天的文章吧。</p>
+<p><code>json:&quot;text&quot;</code>是go中在json字符串中的键名称，json中会把<strong>Text</strong>这个键变为<strong>text</strong></p>
+<p>绑定之后初始化提词器模板，将结构体中的消息放入模板中格式化，变为格式化语句，再将格式化语句按照大模型的输入要求传入模型中</p>
+<p>最后返回大模型的回答内容，即<strong>resp.Choices[0].Content</strong></p>
+<p>这样一个Dochat就完成了。</p>
+<h4 id="模板初始化"><a href="#模板初始化" class="headerlink" title="模板初始化"></a>模板初始化</h4><p>**util.CreatePrompt()**这个函数为初始化模板的函数，代码如下</p>
+<div class="highlight-container" data-rel="Go"><figure class="iseeu highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">CreatePrompt</span><span class="params">()</span></span> prompts.ChatPromptTemplate &#123;</span><br><span class="line">    <span class="keyword">return</span> prompts.NewChatPromptTemplate([]prompts.MessageFormatter&#123;</span><br><span class="line">       prompts.NewSystemMessagePromptTemplate(<span class="string">&quot;&quot;</span>, <span class="literal">nil</span>),</span><br><span class="line">       prompts.NewHumanMessagePromptTemplate(<span class="string">&quot;&#123;&#123; .text &#125;&#125;&quot;</span>, []<span class="type">string</span>&#123;</span><br><span class="line">          <span class="string">&quot;text&quot;</span>,</span><br><span class="line">       &#125;),</span><br><span class="line">    &#125;)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+
+<p>这里初始化的时候不需要给系统提示词，因为我们并不需要给模型一个具体场景下的角色，</p>
+<p>人类的提示词即我们在前端输入的语句，这里使用go语言的模板初始化，代表这里要填的内容为后续<strong>text</strong>的内容</p>
+<h4 id="大模型初始化"><a href="#大模型初始化" class="headerlink" title="大模型初始化"></a>大模型初始化</h4><p>**util.CteateModel(c, “qwen”)**这个函数为初始化大模型的函数，代码如下</p>
+<div class="highlight-container" data-rel="Go"><figure class="iseeu highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">CteateModel</span><span class="params">(c *gin.Context, ModelName <span class="type">string</span>)</span></span> *ollama.LLM &#123;</span><br><span class="line">    llm, err := ollama.New(ollama.WithModel(ModelName))</span><br><span class="line">    <span class="keyword">if</span> err != <span class="literal">nil</span> &#123;</span><br><span class="line">       c.JSON(http.StatusInternalServerError, gin.H&#123;</span><br><span class="line">          <span class="string">&quot;msg&quot;</span>: err.Error(),</span><br><span class="line">       &#125;)</span><br><span class="line">       <span class="keyword">return</span> <span class="literal">nil</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> llm</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+
+<p>就是调用接口**ollama.New()**创建一个大模型的指针即可</p>
+<h1 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h1><p>Dochat中就是接收前端消息，初始化消息模型，初始化大模型，把前端消息格式化后传入给大模型再返回大模型的消息即可</p>
 
         </div>
 
@@ -354,18 +349,18 @@
             <div class="post-copyright-info w-full my-8 px-2 sm:px-6 md:px-8">
                 <div class="article-copyright-info-container">
     <ul>
-        <li><strong>标题:</strong> Go的ai对话网页详解-第一天</li>
+        <li><strong>标题:</strong> Go的ai对话网页详解-第二天</li>
         <li><strong>作者:</strong> lkpalu</li>
         <li><strong>创建于
-                :</strong> 2024-11-04 17:09:00</li>
+                :</strong> 2024-11-05 12:29:15</li>
         
             <li>
                 <strong>更新于
-                    :</strong> 2024-11-05 17:52:02
+                    :</strong> 2024-11-06 12:48:52
             </li>
         
         <li>
-            <strong>链接:</strong> https://redefine.ohevan.com/2024/11/04/Go的ai对话网页详解-第一天/
+            <strong>链接:</strong> https://redefine.ohevan.com/2024/11/05/Go的ai对话网页详解-第二天/
         </li>
         <li>
             <strong>
@@ -398,29 +393,14 @@
         
             <div class="article-nav my-8 flex justify-between items-center px-2 sm:px-6 md:px-8">
                 
-                    <div class="article-prev border-border-color shadow-redefine-flat shadow-shadow-color-2 rounded-medium px-4 py-2 hover:shadow-redefine-flat-hover hover:shadow-shadow-color-2">
-                        <a class="prev"
-                        rel="prev"
-                        href="/2024/11/05/Go%E7%9A%84ai%E5%AF%B9%E8%AF%9D%E7%BD%91%E9%A1%B5%E8%AF%A6%E8%A7%A3-%E7%AC%AC%E4%BA%8C%E5%A4%A9/"
-                        >
-                            <span class="left arrow-icon flex justify-center items-center">
-                                <i class="fa-solid fa-chevron-left"></i>
-                            </span>
-                            <span class="title flex justify-center items-center">
-                                <span class="post-nav-title-item">Go的ai对话网页详解-第二天</span>
-                                <span class="post-nav-item">上一篇</span>
-                            </span>
-                        </a>
-                    </div>
-                
                 
                     <div class="article-next border-border-color shadow-redefine-flat shadow-shadow-color-2 rounded-medium px-4 py-2 hover:shadow-redefine-flat-hover hover:shadow-shadow-color-2">
                         <a class="next"
                         rel="next"
-                        href="/2024/11/03/Java%E9%93%BE%E8%A1%A8%E5%AE%9E%E7%8E%B0/"
+                        href="/2024/11/04/Go%E7%9A%84ai%E5%AF%B9%E8%AF%9D%E7%BD%91%E9%A1%B5%E8%AF%A6%E8%A7%A3-%E7%AC%AC%E4%B8%80%E5%A4%A9/"
                         >
                             <span class="title flex justify-center items-center">
-                                <span class="post-nav-title-item">Java链表实现</span>
+                                <span class="post-nav-title-item">Go的ai对话网页详解-第一天</span>
                                 <span class="post-nav-item">下一篇</span>
                             </span>
                             <span class="right arrow-icon flex justify-center items-center">
@@ -499,8 +479,8 @@
             <div class="post-toc-wrap">
     <div class="post-toc">
         <div class="toc-title">目录</div>
-        <div class="page-title">Go的ai对话网页详解-第一天</div>
-        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Go-ai%E5%AF%B9%E8%AF%9D%E7%BD%91%E9%A1%B5"><span class="nav-text">Go ai对话网页</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%89%8D%E7%BD%AE%E6%9D%A1%E4%BB%B6"><span class="nav-text">前置条件</span></a></li></ol></li></ol>
+        <div class="page-title">Go的ai对话网页详解-第二天</div>
+        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%AC%AC%E4%BA%8C%E5%A4%A9-%E2%80%93-Dochat%E5%9B%9E%E8%B0%83%E5%87%BD%E6%95%B0%E8%AF%A6%E8%A7%A3"><span class="nav-text">第二天 – Dochat回调函数详解</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%B0%8F%E7%BB%93"><span class="nav-text">小结</span></a></li></ol>
 
     </div>
 </div>
