@@ -19,23 +19,25 @@
     
     <!--- Seo Part-->
     
-    <link rel="canonical" href="http://example.com/2024/11/03/说明介绍/"/>
+    <link rel="canonical" href="http://example.com/2024/11/07/grpc初探-proto文件的编写/"/>
     <meta name="robots" content="index,follow">
     <meta name="googlebot" content="index,follow">
     <meta name="revisit-after" content="1 days">
     
-        <meta name="description" content="说明先说一下为啥这几篇文章全是Java的，只是因为java和数据结构快要结课考试了， 后续会更新一些go以及其他方面的内容 个人说明姓名：卢普希 爱好：略：） 太原理工大学在读大二软件工程学生，水平比较菜，写写博客记录一下自己写的或者做的一些小东西">
+        <meta name="description" content="语法proto文件为protoc buffer文件，这是一种高效的文件格式，由Google出品，现在流行的语法为proto3， 123456789101112131415syntax &#x3D; &quot;proto3&quot;;option go_package &#x3D; &quot;github.com&#x2F;lkpalu&#x2F;grpc-go-example&#x2F;proto&quot;;package Server;">
 <meta property="og:type" content="article">
-<meta property="og:title" content="说明介绍">
-<meta property="og:url" content="http://example.com/2024/11/03/%E8%AF%B4%E6%98%8E%E4%BB%8B%E7%BB%8D/index.html">
+<meta property="og:title" content="GRPC初探--proto文件的编写">
+<meta property="og:url" content="http://example.com/2024/11/07/GRPC%E5%88%9D%E6%8E%A2-proto%E6%96%87%E4%BB%B6%E7%9A%84%E7%BC%96%E5%86%99/index.html">
 <meta property="og:site_name" content="Blog">
-<meta property="og:description" content="说明先说一下为啥这几篇文章全是Java的，只是因为java和数据结构快要结课考试了， 后续会更新一些go以及其他方面的内容 个人说明姓名：卢普希 爱好：略：） 太原理工大学在读大二软件工程学生，水平比较菜，写写博客记录一下自己写的或者做的一些小东西">
+<meta property="og:description" content="语法proto文件为protoc buffer文件，这是一种高效的文件格式，由Google出品，现在流行的语法为proto3， 123456789101112131415syntax &#x3D; &quot;proto3&quot;;option go_package &#x3D; &quot;github.com&#x2F;lkpalu&#x2F;grpc-go-example&#x2F;proto&quot;;package Server;">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2024-11-02T16:00:00.000Z">
-<meta property="article:modified_time" content="2024-11-05T09:54:22.837Z">
+<meta property="og:image" content="http://example.com/images/proto.png">
+<meta property="article:published_time" content="2024-11-07T07:05:00.000Z">
+<meta property="article:modified_time" content="2024-11-07T07:40:29.086Z">
 <meta property="article:author" content="lkpalu">
-<meta property="article:tag" content="life">
+<meta property="article:tag" content="GO">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://example.com/images/proto.png">
     
     
     <!--- Icon Part-->
@@ -47,7 +49,7 @@
     
     <title>
         
-            说明介绍 | lkpalu 个人博客
+            GRPC初探--proto文件的编写 | lkpalu 个人博客
         
     </title>
 
@@ -235,7 +237,7 @@
         <div class="article-title relative w-full">
             
                 <div class="w-full flex items-center pt-6 justify-start">
-                    <h1 class="article-title-regular text-second-text-color tracking-tight text-4xl md:text-6xl font-semibold px-2 sm:px-6 md:px-8 py-3">说明介绍</h1>
+                    <h1 class="article-title-regular text-second-text-color tracking-tight text-4xl md:text-6xl font-semibold px-2 sm:px-6 md:px-8 py-3">GRPC初探--proto文件的编写</h1>
                 </div>
             
             </div>
@@ -256,15 +258,15 @@
                         <div class="article-meta-info">
     <span class="article-date article-meta-item">
         <i class="fa-regular fa-pen-fancy"></i>&nbsp;
-        <span class="desktop">2024-11-03</span>
-        <span class="mobile">2024-11-03</span>
+        <span class="desktop">2024-11-07 15:05</span>
+        <span class="mobile">2024-11-07 15:05</span>
         <span class="hover-info">创建</span>
     </span>
     
         <span class="article-date article-meta-item">
             <i class="fa-regular fa-wrench"></i>&nbsp;
-            <span class="desktop">2024-11-05 17:54:22</span>
-            <span class="mobile">2024-11-05 17:54:22</span>
+            <span class="desktop">2024-11-07 15:40:29</span>
+            <span class="mobile">2024-11-07 15:40:29</span>
             <span class="hover-info">更新</span>
         </span>
     
@@ -278,7 +280,7 @@
                     
                         
                         <li>
-                            <a href="/categories/%E7%94%9F%E6%B4%BB%E5%90%91/">生活向</a>&nbsp;
+                            <a href="/categories/%E6%8A%80%E6%9C%AF%E5%90%91/">技术向</a>&nbsp;
                         </li>
                     
                     
@@ -292,7 +294,7 @@
             <ul>
                 
                     <li>
-                        <a href="/tags/life/">life</a>&nbsp;
+                        <a href="/tags/GO/">GO</a>&nbsp;
                     </li>
                 
             </ul>
@@ -318,11 +320,31 @@
 
 
         <div class="article-content markdown-body px-2 sm:px-6 md:px-8 pb-8">
-            <h2 id="说明"><a href="#说明" class="headerlink" title="说明"></a>说明</h2><p>先说一下为啥这几篇文章全是Java的，只是因为java和数据结构快要结课考试了，</p>
-<p>后续会更新一些go以及其他方面的内容</p>
-<h2 id="个人说明"><a href="#个人说明" class="headerlink" title="个人说明"></a>个人说明</h2><p>姓名：卢普希</p>
-<p>爱好：略：）</p>
-<p>太原理工大学在读大二软件工程学生，水平比较菜，写写博客记录一下自己写的或者做的一些小东西</p>
+            <h1 id="语法"><a href="#语法" class="headerlink" title="语法"></a>语法</h1><p>proto文件为protoc buffer文件，这是一种高效的文件格式，由Google出品，现在流行的语法为proto3，</p>
+<div class="highlight-container" data-rel="Protobuf"><figure class="iseeu highlight protobuf"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">syntax = <span class="string">&quot;proto3&quot;</span>;</span><br><span class="line"><span class="keyword">option</span> go_package = <span class="string">&quot;github.com/lkpalu/grpc-go-example/proto&quot;</span>;</span><br><span class="line"><span class="keyword">package</span> Server;</span><br><span class="line"></span><br><span class="line"><span class="keyword">message </span><span class="title class_">Request</span> &#123;</span><br><span class="line">  <span class="type">string</span> messages = <span class="number">1</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">message </span><span class="title class_">Response</span> &#123;</span><br><span class="line">  <span class="type">string</span> messages = <span class="number">1</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">service </span><span class="title class_">New</span>&#123;</span><br><span class="line">  <span class="function"><span class="keyword">rpc</span> Hello (Request) <span class="keyword">returns</span> (Response)</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+
+<h4 id="第一句指定该文件的语法版本可选proto3-proto2"><a href="#第一句指定该文件的语法版本可选proto3-proto2" class="headerlink" title="第一句指定该文件的语法版本可选proto3&#x2F;proto2"></a>第一句指定该文件的语法版本可选proto3&#x2F;proto2</h4><h4 id="第二句指定由proto文件生成的go文件所在包目录"><a href="#第二句指定由proto文件生成的go文件所在包目录" class="headerlink" title="第二句指定由proto文件生成的go文件所在包目录"></a>第二句指定由proto文件生成的go文件所在包目录</h4><h4 id="第三句指定生成的go文件的package"><a href="#第三句指定生成的go文件的package" class="headerlink" title="第三句指定生成的go文件的package"></a>第三句指定生成的go文件的package</h4><h2 id="message"><a href="#message" class="headerlink" title="message"></a>message</h2><p>meassage类似不同语言中的结构体</p>
+<p>用于定义发送消息和接收消息的内容类型</p>
+<p>格式为<strong>变量类型 变量 &#x3D; id</strong></p>
+<p>初次接触的朋友可能不了解这个id是用来做什么的，这个其实是文件在序列化和反序列化时的排序</p>
+<h2 id="service"><a href="#service" class="headerlink" title="service"></a>service</h2><p>service类似不同语言的接口或抽象类，用来规定服务端的函数</p>
+<p>内部的rpc为函数定义，即远程调用的函数，特别注意，流式服务需要指明传入参数stream或传出参数stream</p>
+<p>如</p>
+<div class="highlight-container" data-rel="Protobuf"><figure class="iseeu highlight protobuf"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">service </span><span class="title class_">New</span>&#123;</span><br><span class="line">  <span class="function"><span class="keyword">rpc</span> Hello (Request) <span class="keyword">returns</span> (Response)</span>;</span><br><span class="line">  <span class="function"><span class="keyword">rpc</span> Hello2 (stream Request) <span class="keyword">returns</span> (stream Response)</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+
+
+
+<h1 id="代码生成"><a href="#代码生成" class="headerlink" title="代码生成"></a>代码生成</h1><p>在proto文件目录中运行</p>
+<div class="highlight-container" data-rel="Shell"><figure class="iseeu highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">protoc --go_out=. --go-grpc_out=. your_proto_file.proto</span><br></pre></td></tr></table></figure></div>
+
+<p>会生成两个文件并且目录结构如下</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="/images/proto.png"
+                      alt="proto"
+                ></p>
+<p>目录结构和刚才指定的go_package相同</p>
 
         </div>
 
@@ -330,18 +352,18 @@
             <div class="post-copyright-info w-full my-8 px-2 sm:px-6 md:px-8">
                 <div class="article-copyright-info-container">
     <ul>
-        <li><strong>标题:</strong> 说明介绍</li>
+        <li><strong>标题:</strong> GRPC初探--proto文件的编写</li>
         <li><strong>作者:</strong> lkpalu</li>
         <li><strong>创建于
-                :</strong> 2024-11-03 00:00:00</li>
+                :</strong> 2024-11-07 15:05:00</li>
         
             <li>
                 <strong>更新于
-                    :</strong> 2024-11-05 17:54:22
+                    :</strong> 2024-11-07 15:40:29
             </li>
         
         <li>
-            <strong>链接:</strong> https://redefine.ohevan.com/2024/11/03/说明介绍/
+            <strong>链接:</strong> https://redefine.ohevan.com/2024/11/07/GRPC初探-proto文件的编写/
         </li>
         <li>
             <strong>
@@ -363,7 +385,7 @@
             <ul class="post-tags-box text-lg mt-1.5 flex-wrap justify-center flex md:hidden">
                 
                     <li class="tag-item mx-0.5">
-                        <a href="/tags/life/">#life</a>&nbsp;
+                        <a href="/tags/GO/">#GO</a>&nbsp;
                     </li>
                 
             </ul>
@@ -374,21 +396,21 @@
         
             <div class="article-nav my-8 flex justify-between items-center px-2 sm:px-6 md:px-8">
                 
-                    <div class="article-prev border-border-color shadow-redefine-flat shadow-shadow-color-2 rounded-medium px-4 py-2 hover:shadow-redefine-flat-hover hover:shadow-shadow-color-2">
-                        <a class="prev"
-                        rel="prev"
-                        href="/2024/11/03/%E4%BA%8C%E5%8F%89%E6%A0%91%E5%AE%9E%E7%8E%B0-%E5%88%9D%E5%A7%8B%E5%8C%96%EF%BC%8C%E5%B1%82%E5%BA%8F%E9%81%8D%E5%8E%86%EF%BC%88%E5%B9%BF%E6%90%9C%EF%BC%89/"
+                
+                    <div class="article-next border-border-color shadow-redefine-flat shadow-shadow-color-2 rounded-medium px-4 py-2 hover:shadow-redefine-flat-hover hover:shadow-shadow-color-2">
+                        <a class="next"
+                        rel="next"
+                        href="/2024/11/06/%E5%88%9D%E6%8E%A2net-rpc/"
                         >
-                            <span class="left arrow-icon flex justify-center items-center">
-                                <i class="fa-solid fa-chevron-left"></i>
-                            </span>
                             <span class="title flex justify-center items-center">
-                                <span class="post-nav-title-item">二叉树实现-初始化，层序遍历（广搜）</span>
-                                <span class="post-nav-item">上一篇</span>
+                                <span class="post-nav-title-item">初探net/rpc</span>
+                                <span class="post-nav-item">下一篇</span>
+                            </span>
+                            <span class="right arrow-icon flex justify-center items-center">
+                                <i class="fa-solid fa-chevron-right"></i>
                             </span>
                         </a>
                     </div>
-                
                 
             </div>
         
@@ -460,8 +482,8 @@
             <div class="post-toc-wrap">
     <div class="post-toc">
         <div class="toc-title">目录</div>
-        <div class="page-title">说明介绍</div>
-        <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%AF%B4%E6%98%8E"><span class="nav-text">说明</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%AA%E4%BA%BA%E8%AF%B4%E6%98%8E"><span class="nav-text">个人说明</span></a></li></ol>
+        <div class="page-title">GRPC初探--proto文件的编写</div>
+        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E8%AF%AD%E6%B3%95"><span class="nav-text">语法</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#message"><span class="nav-text">message</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#service"><span class="nav-text">service</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%BB%A3%E7%A0%81%E7%94%9F%E6%88%90"><span class="nav-text">代码生成</span></a></li></ol>
 
     </div>
 </div>
