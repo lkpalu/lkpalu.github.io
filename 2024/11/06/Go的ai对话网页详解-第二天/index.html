@@ -32,7 +32,7 @@
 <meta property="og:description" content="第二天 – Dochat回调函数详解先把函数贴上来 1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950func (this *Chat) Dochat(c *gin.Context) &#123;    var body model.Chat    err :&#x3D; c.">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2024-11-06T04:29:15.000Z">
-<meta property="article:modified_time" content="2024-11-06T13:58:17.965Z">
+<meta property="article:modified_time" content="2024-11-07T07:45:40.790Z">
 <meta property="article:author" content="lkpalu">
 <meta property="article:tag" content="Go">
 <meta name="twitter:card" content="summary">
@@ -263,8 +263,8 @@
     
         <span class="article-date article-meta-item">
             <i class="fa-regular fa-wrench"></i>&nbsp;
-            <span class="desktop">2024-11-06 21:58:17</span>
-            <span class="mobile">2024-11-06 21:58:17</span>
+            <span class="desktop">2024-11-07 15:45:40</span>
+            <span class="mobile">2024-11-07 15:45:40</span>
             <span class="hover-info">更新</span>
         </span>
     
@@ -324,9 +324,8 @@
 
 
 <h4 id="函数逻辑"><a href="#函数逻辑" class="headerlink" title="函数逻辑"></a>函数逻辑</h4><p>这个函数中就是对于前端的json接收以及处理的一个过程，一开始的ShouldBindJSON方法让前端</p>
-<p><code>&#123;</code></p>
-<p>​	<code>“text” : messages</code></p>
-<p><code>&#125;</code></p>
+<div class="highlight-container" data-rel="Json"><figure class="iseeu highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="punctuation">&#123;</span></span><br><span class="line"></span><br><span class="line">	“text” <span class="punctuation">:</span> messages</span><br><span class="line"></span><br><span class="line"><span class="punctuation">&#125;</span></span><br></pre></td></tr></table></figure></div>
+
 <p>绑定到结构体中，结构体格式如下</p>
 <div class="highlight-container" data-rel="Go"><figure class="iseeu highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">type</span> Chat <span class="keyword">struct</span> &#123;</span><br><span class="line">    Text <span class="type">string</span> <span class="string">`json:&quot;text&quot;`</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
 
@@ -358,7 +357,7 @@
         
             <li>
                 <strong>更新于
-                    :</strong> 2024-11-06 21:58:17
+                    :</strong> 2024-11-07 15:45:40
             </li>
         
         <li>
