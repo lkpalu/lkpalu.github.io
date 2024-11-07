@@ -208,4 +208,23 @@
         <tag>GO</tag>
       </tags>
   </entry>
+  <entry>
+    <title>离散数学不同关系之间的联系</title>
+    <url>/2024/11/07/%E7%A6%BB%E6%95%A3%E6%95%B0%E5%AD%A6%E4%B8%8D%E5%90%8C%E5%85%B3%E7%B3%BB%E4%B9%8B%E9%97%B4%E7%9A%84%E8%81%94%E7%B3%BB/</url>
+    <content><![CDATA[<h1 id="不同关系的定义"><a href="#不同关系的定义" class="headerlink" title="不同关系的定义"></a>不同关系的定义</h1><h3 id="恒等关系"><a href="#恒等关系" class="headerlink" title="恒等关系:"></a>恒等关系:</h3><p>恒等关系，是满足且只满足自身与自身的关系，对应关系矩阵是<a class="link"   href="https://baike.baidu.com/item/%E5%8D%95%E4%BD%8D%E7%9F%A9%E9%98%B5/0?fromModule=lemma_inlink" >单位矩阵 <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a>。 [2]</p>
+<p>设A&#x3D;{a,b,c}，则其上关系R&#x3D;{&lt;a,a&gt;,&lt;b,b&gt;,&lt;c,c&gt;}，<strong>关系矩阵为单位矩阵</strong>。恒等关系满足<strong>自反性、对称性、反对称性</strong>等性质。</p>
+<h3 id="相容关系"><a href="#相容关系" class="headerlink" title="相容关系"></a>相容关系</h3><p>指集合A上具有自反性与对称性的二元关系。</p>
+<h3 id="等价关系"><a href="#等价关系" class="headerlink" title="等价关系"></a>等价关系</h3><p>等价关系定义为：设R是非空集合A上的二元关系，若R是<strong>自反的、对称的、传递的</strong>，则称R是A上的等价关系。</p>
+<h3 id="拟序关系"><a href="#拟序关系" class="headerlink" title="拟序关系"></a>拟序关系</h3><p>设R为非空集合A上的关系。如果R是<strong>反自反，反对称和传递的</strong>，则称R是A的拟序关系</p>
+<h3 id="偏序关系"><a href="#偏序关系" class="headerlink" title="偏序关系"></a>偏序关系</h3><p>设R为非空集合A上的关系。如果R是<strong>自反，反对称和传递的</strong>，则称R是A的拟序关系</p>
+<h3 id="全序关系"><a href="#全序关系" class="headerlink" title="全序关系"></a>全序关系</h3><p>设&lt; A,&lt;&#x3D; &gt;是一个<strong>偏序关系</strong>，若对任意x,y属于A,总有x &lt;&#x3D; y,或y &lt;&#x3D; x之一成立，则成关系&lt;&#x3D;为全序关系或线序关系</p>
+<h3 id="良序关系"><a href="#良序关系" class="headerlink" title="良序关系"></a>良序关系</h3><p>设&lt; A,&lt;&#x3D; &gt;是一<strong>偏序集</strong>，若对A的任何一个非空子集都有最小元，则称&lt;&#x3D;为良序关系</p>
+<h1 id="—————————————–"><a href="#—————————————–" class="headerlink" title="—————————————–"></a>—————————————–</h1><p>以上为离散数学中不同关系的定义</p>
+<p>由此</p>
+<p><strong>恒等关系既是等价关系又是偏序关系</strong></p>
+]]></content>
+      <tags>
+        <tag>离散数学</tag>
+      </tags>
+  </entry>
 </search>
