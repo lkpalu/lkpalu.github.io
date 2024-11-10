@@ -243,4 +243,33 @@
         <tag>Go</tag>
       </tags>
   </entry>
+  <entry>
+    <title>proto文件类型补充</title>
+    <url>/2024/11/10/proto%E6%96%87%E4%BB%B6%E7%B1%BB%E5%9E%8B%E8%A1%A5%E5%85%85/</url>
+    <content><![CDATA[<h2 id="proto文件类型及语法"><a href="#proto文件类型及语法" class="headerlink" title="proto文件类型及语法"></a>proto文件类型及语法</h2><p>proto文件的类型上次写了message和service，此外还有map和enum</p>
+<p>代码如下</p>
+<h4 id="map"><a href="#map" class="headerlink" title="map"></a>map</h4><div class="highlight-container" data-rel="Protobuf"><figure class="iseeu highlight protobuf"><table><tr><td class="code"><pre><span class="line"><span class="keyword">message </span><span class="title class_">Pong</span>&#123;</span><br><span class="line">  <span class="type">string</span> message = <span class="number">1</span>;</span><br><span class="line">  Test t = <span class="number">2</span>;</span><br><span class="line">  map&lt;<span class="type">string</span>, <span class="type">int32</span>&gt; m = <span class="number">3</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+
+
+
+<h4 id="enum"><a href="#enum" class="headerlink" title="enum"></a>enum</h4><div class="highlight-container" data-rel="Protobuf"><figure class="iseeu highlight protobuf"><table><tr><td class="code"><pre><span class="line"><span class="keyword">enum </span><span class="title class_">Test</span>&#123;</span><br><span class="line">  A = <span class="number">0</span>;</span><br><span class="line">  B = <span class="number">1</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+
+
+
+<p>生成的go语言代码如下</p>
+<div class="highlight-container" data-rel="Go"><figure class="iseeu highlight go"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line"><span class="comment">//enum类型</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">type</span> Test <span class="type">int32</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> (</span><br><span class="line">    Test_A Test = <span class="number">0</span></span><br><span class="line">    Test_B Test = <span class="number">1</span></span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"><span class="comment">// Enum value maps for Test.</span></span><br><span class="line"><span class="keyword">var</span> (</span><br><span class="line">    Test_name = <span class="keyword">map</span>[<span class="type">int32</span>]<span class="type">string</span>&#123;</span><br><span class="line">       <span class="number">0</span>: <span class="string">&quot;A&quot;</span>,</span><br><span class="line">       <span class="number">1</span>: <span class="string">&quot;B&quot;</span>,</span><br><span class="line">    &#125;</span><br><span class="line">    Test_value = <span class="keyword">map</span>[<span class="type">string</span>]<span class="type">int32</span>&#123;</span><br><span class="line">       <span class="string">&quot;A&quot;</span>: <span class="number">0</span>,</span><br><span class="line">       <span class="string">&quot;B&quot;</span>: <span class="number">1</span>,</span><br><span class="line">    &#125;</span><br><span class="line">)</span><br></pre></td></tr></table></figure></div>
+
+<div class="highlight-container" data-rel="Go"><figure class="iseeu highlight go"><table><tr><td class="code"><pre><span class="line"><span class="comment">//Pong结构体</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">type</span> Pong <span class="keyword">struct</span> &#123;</span><br><span class="line">    state         protoimpl.MessageState</span><br><span class="line">    sizeCache     protoimpl.SizeCache</span><br><span class="line">    unknownFields protoimpl.UnknownFields</span><br><span class="line"></span><br><span class="line">    Message <span class="type">string</span>           <span class="string">`protobuf:&quot;bytes,1,opt,name=message,proto3&quot; json:&quot;message,omitempty&quot;`</span></span><br><span class="line">    T       Test             <span class="string">`protobuf:&quot;varint,2,opt,name=t,proto3,enum=Server.Test&quot; json:&quot;t,omitempty&quot;`</span></span><br><span class="line">    M       <span class="keyword">map</span>[<span class="type">string</span>]<span class="type">int32</span> <span class="string">`protobuf:&quot;bytes,3,rep,name=m,proto3&quot; json:&quot;m,omitempty&quot; protobuf_key:&quot;bytes,1,opt,name=key,proto3&quot; protobuf_val:&quot;varint,2,opt,name=value,proto3&quot;`</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+
+<p>定义的enum类型会定义为int32的常量</p>
+<h2 id="补充语法"><a href="#补充语法" class="headerlink" title="补充语法"></a>补充语法</h2><p>上次在proto中未提到import，</p>
+<p>proto中也支持import导入其他文件中定义的数据类型</p>
+<div class="highlight-container" data-rel="Protobuf"><figure class="iseeu highlight protobuf"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> <span class="string">&quot;base.proto&quot;</span>;</span><br><span class="line"><span class="keyword">import</span> <span class="string">&quot;google/protobuf/empty.proto&quot;</span>;</span><br></pre></td></tr></table></figure></div>
+
+<h4 id="注意"><a href="#注意" class="headerlink" title="注意"></a>注意</h4><p>在生成代码时需要同时为多个proto文件生成代码，否则会出现找不到数据类型的情况</p>
+]]></content>
+      <tags>
+        <tag>Go</tag>
+      </tags>
+  </entry>
 </search>
