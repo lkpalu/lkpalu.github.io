@@ -284,4 +284,13 @@
         <tag>Java</tag>
       </tags>
   </entry>
+  <entry>
+    <title>记一次minikube start的经历</title>
+    <url>/2024/11/15/%E8%AE%B0%E4%B8%80%E6%AC%A1minikube-start%E7%9A%84%E7%BB%8F%E5%8E%86/</url>
+    <content><![CDATA[<h2 id="minikube"><a href="#minikube" class="headerlink" title="minikube"></a>minikube</h2><p>昨天在运行minikube start的时候因为网络问题太慢了，想着找个国内源，但按照网上的方法后面添加阿里的镜像源后提示找不到镜像源，后来试了好几次都不行，直接把wifi换成手机热点了，速度快了不少，也是等了十几分钟下好了，但之后下载完预处理文件后又报错，提示网络问题，今天换了wifi，挂了tz之后发现中途依然会报错，但最后会成功，就记录以下这样一个简短的经历吧。</p>
+]]></content>
+      <tags>
+        <tag>k8s</tag>
+      </tags>
+  </entry>
 </search>
