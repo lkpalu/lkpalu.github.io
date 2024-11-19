@@ -293,4 +293,43 @@
         <tag>k8s</tag>
       </tags>
   </entry>
+  <entry>
+    <title>lk-本地音乐播放器</title>
+    <url>/2024/11/19/lk-%E6%9C%AC%E5%9C%B0%E9%9F%B3%E4%B9%90%E6%92%AD%E6%94%BE%E5%99%A8/</url>
+    <content><![CDATA[<h4 id="项目地址"><a href="#项目地址" class="headerlink" title="项目地址"></a>项目地址</h4><p><a class="link"   href="https://github.com/lkpalu/lk-musicplayer" >https://github.com/lkpalu/lk-musicplayer <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></p>
+<h2 id="说明"><a href="#说明" class="headerlink" title="说明"></a>说明</h2><p>这个音乐播放器应该是我前两天突然想写的一个应用，因为我平时也听本地歌曲，但本地的播放器都不是那么快速的能够让我听到歌，正好最近了解了cobra这个命令行库，就有了这个命令行本地音乐播放器了</p>
+<h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><p>从github上面把项目克隆下来之后，文件夹里面会有两个lk，一个是lk.exe为windows的64位x86软件，另一个位lk是Linux下的64位x86软件，arm架构的目前还在编译中，克隆下来之后把当前目录添加到系统环境变量中，然后在系统环境变量中添加Mytool变量，路径依然为当前目录，最后在config.json中将root改为你想放置数据库文件的地方就可以正常使用了。</p>
+<h2 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h2><p>基本的几个使用方法仓库里已经说明了，这里主要说明一下命令行的参数</p>
+<p>1.随机播放模式</p>
+<div class="highlight-container" data-rel="Shell"><figure class="iseeu highlight shell"><table><tr><td class="code"><pre><span class="line">lk play -r</span><br></pre></td></tr></table></figure></div>
+
+
+
+<p>2.顺序播放</p>
+<div class="highlight-container" data-rel="Shell"><figure class="iseeu highlight shell"><table><tr><td class="code"><pre><span class="line">lk play -o</span><br></pre></td></tr></table></figure></div>
+
+
+
+<p>3.循环播放</p>
+<div class="highlight-container" data-rel="Shell"><figure class="iseeu highlight shell"><table><tr><td class="code"><pre><span class="line">lk play [index] -l [count]</span><br></pre></td></tr></table></figure></div>
+
+<p>[index]为需要播放的歌曲序号</p>
+<p>[count]为需要循环的次数</p>
+<p>这两个默认参数不填index为1</p>
+<p>count为0表示无限循环</p>
+<p>4.删除</p>
+<div class="highlight-container" data-rel="Shell"><figure class="iseeu highlight shell"><table><tr><td class="code"><pre><span class="line">lk rm [index]</span><br></pre></td></tr></table></figure></div>
+
+<div class="highlight-container" data-rel="Shell"><figure class="iseeu highlight shell"><table><tr><td class="code"><pre><span class="line">lk rm -a</span><br></pre></td></tr></table></figure></div>
+
+<p>-a 表示删除整个歌单</p>
+<p>5.排序</p>
+<div class="highlight-container" data-rel="Shell"><figure class="iseeu highlight shell"><table><tr><td class="code"><pre><span class="line">lk sort</span><br></pre></td></tr></table></figure></div>
+
+<p>默认删除完歌曲后会重新排序但有时也需要手动排序（序号不连续时，理论不需要手动排序）</p>
+<h2 id="之后会带来源码讲解"><a href="#之后会带来源码讲解" class="headerlink" title="之后会带来源码讲解"></a>之后会带来源码讲解</h2>]]></content>
+      <tags>
+        <tag>Go</tag>
+      </tags>
+  </entry>
 </search>
