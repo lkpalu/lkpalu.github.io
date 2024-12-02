@@ -332,4 +332,59 @@
         <tag>Go</tag>
       </tags>
   </entry>
+  <entry>
+    <title>红黑树c语言实现</title>
+    <url>/2024/12/02/%E7%BA%A2%E9%BB%91%E6%A0%91/</url>
+    <content><![CDATA[<h1 id="红黑树"><a href="#红黑树" class="headerlink" title="红黑树"></a>红黑树</h1><h2 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h2><p>（叶子节点包含空节点）</p>
+<p>1.每个节点是红的或者黑的</p>
+<p>2.根节点是黑的</p>
+<p>3.每个叶子节点是黑的</p>
+<p>4.如果一个节点是红的，则他的两个儿子都是黑的</p>
+<p>5.对每个节点，从该节点到其子孙节点的所有路径上包含相同数目的黑节点</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="/images/rbtree/define.jpg"
+                      alt="旋转"
+                ></p>
+<h3 id="节点定义"><a href="#节点定义" class="headerlink" title="节点定义"></a>节点定义</h3><div class="highlight-container" data-rel="C"><figure class="iseeu highlight c"><table><tr><td class="code"><pre><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> <span class="title">rtbtree</span>&#123;</span></span><br><span class="line"></span><br><span class="line">  <span class="type">int</span> key;</span><br><span class="line"></span><br><span class="line">  <span class="type">void</span>* value;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">  <span class="class"><span class="keyword">struct</span> <span class="title">rtbtree</span>* <span class="title">left</span>;</span></span><br><span class="line"></span><br><span class="line">  <span class="class"><span class="keyword">struct</span> <span class="title">rtbtree</span>* <span class="title">right</span>;</span></span><br><span class="line"></span><br><span class="line">  <span class="class"><span class="keyword">struct</span> <span class="title">rtbtree</span>* <span class="title">parent</span>;</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">  <span class="type">unsigned</span> <span class="type">char</span> color;</span><br><span class="line"></span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></div>
+
+
+
+<h3 id="关键节点定义"><a href="#关键节点定义" class="headerlink" title="关键节点定义"></a>关键节点定义</h3><div class="highlight-container" data-rel="C"><figure class="iseeu highlight c"><table><tr><td class="code"><pre><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> <span class="title">rbtree</span>&#123;</span></span><br><span class="line">    rbtree_node* root;</span><br><span class="line">    rbtree_node* nil;</span><br><span class="line">&#125;rbtree;</span><br></pre></td></tr></table></figure></div>
+
+<p>这里定义nil节点为所有的叶子节点</p>
+<p>根据上面定义的节点来看，迁移性非常差，做出如下修改</p>
+<div class="highlight-container" data-rel="C"><figure class="iseeu highlight c"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">define</span> RBTREE_ENTRY(name,type) \</span></span><br><span class="line"><span class="meta">    struct name&#123;         \</span></span><br><span class="line"><span class="meta">        struct type *left; \</span></span><br><span class="line"><span class="meta">        struct type *right; \</span></span><br><span class="line"><span class="meta">        struct type *parent; \</span></span><br><span class="line"><span class="meta">        unsigned char color; \</span></span><br><span class="line"><span class="meta">    &#125;</span></span><br><span class="line"><span class="keyword">typedef</span> <span class="type">int</span> KEY_TYPE;    </span><br><span class="line"></span><br><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> <span class="title">rbtree_node</span>&#123;</span></span><br><span class="line">    KEY_TYPE key;</span><br><span class="line">    <span class="type">void</span>* value;</span><br><span class="line"><span class="meta">#<span class="keyword">if</span> 0</span></span><br><span class="line">        <span class="class"><span class="keyword">struct</span> <span class="title">type</span> <span class="title">left</span>;</span> </span><br><span class="line">        <span class="class"><span class="keyword">struct</span> <span class="title">type</span> <span class="title">right</span>;</span> </span><br><span class="line">        <span class="class"><span class="keyword">struct</span> <span class="title">type</span> <span class="title">parent</span>;</span> </span><br><span class="line">        <span class="type">unsigned</span> <span class="type">char</span> color; </span><br><span class="line"><span class="meta">#<span class="keyword">else</span></span></span><br><span class="line">    RBTREE_ENTRY(,rbtree_node) node;</span><br><span class="line"><span class="meta">#<span class="keyword">endif</span></span></span><br><span class="line">&#125;rbtree_node;</span><br></pre></td></tr></table></figure></div>
+
+<p>这种定义方法可以帮助定义不同类型的红黑树，以及在线程中减少代码量</p>
+<h2 id="旋转"><a href="#旋转" class="headerlink" title="旋转"></a>旋转</h2><p>用于红黑树性质被破环的时候，需要进行调整，使树重新满足定义</p>
+<p>1.左旋</p>
+<p>2.右旋</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="/images/rbtree/%E6%97%8B%E8%BD%AC.png"
+                      alt="旋转"
+                ></p>
+<p>图中左侧树经过左旋转为右侧，右侧经过左旋转为左侧，左右旋转可逆</p>
+<p>图中的x为上图定义的一个<strong>rbtree_node</strong>，</p>
+<p>左旋中以x作为轴心，右旋以y作为轴心</p>
+<p>左旋代码</p>
+<div class="highlight-container" data-rel="C"><figure class="iseeu highlight c"><table><tr><td class="code"><pre><span class="line"><span class="type">void</span> <span class="title function_">retree_left_rotate</span><span class="params">(rbtree *T, rbtree_node *x)</span></span><br><span class="line">&#123;</span><br><span class="line">    rbtree_node *y = x-&gt;right;</span><br><span class="line">    <span class="comment">//1</span></span><br><span class="line">    x-&gt;right = y-&gt;left;</span><br><span class="line">    <span class="keyword">if</span> (y-&gt;left != T-&gt;nil)</span><br><span class="line">    &#123;</span><br><span class="line">        y-&gt;left-&gt;parent = x;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">//2</span></span><br><span class="line">    y-&gt;parent = x-&gt;parent;</span><br><span class="line">    <span class="keyword">if</span> (x-&gt;parent == T-&gt;nil) <span class="comment">// x为root节点</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="comment">// 翻转之后root节点为y</span></span><br><span class="line">        T-&gt;root = y;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">else</span> <span class="keyword">if</span> (x == x-&gt;parent-&gt;left) <span class="comment">// x为左节点</span></span><br><span class="line">    &#123;</span><br><span class="line">        x-&gt;parent-&gt;left = y;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">else</span><span class="comment">// x为右节点</span></span><br><span class="line">    &#123;</span><br><span class="line">        x-&gt;parent-&gt;right = y;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">//3</span></span><br><span class="line">    y-&gt;left = x;</span><br><span class="line">    x-&gt;parent = y;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+
+<p>右旋代码</p>
+<div class="highlight-container" data-rel="C"><figure class="iseeu highlight c"><table><tr><td class="code"><pre><span class="line"><span class="type">void</span> <span class="title function_">retree_right_rotate</span><span class="params">(rbtree *T, rbtree_node *y)</span></span><br><span class="line">&#123;</span><br><span class="line">    rbtree_node* x = y-&gt;left;</span><br><span class="line">    <span class="comment">//1</span></span><br><span class="line">    y-&gt;left = x-&gt;right;</span><br><span class="line">    <span class="keyword">if</span>(x != T-&gt;nil)<span class="comment">//x不为叶子节点，叶子节点为nil，不用更改</span></span><br><span class="line">    &#123;</span><br><span class="line">        y-&gt;parent = x;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">//2</span></span><br><span class="line">    x-&gt;parent = y-&gt;parent;</span><br><span class="line">    <span class="keyword">if</span>(y-&gt;parent == T-&gt;nil)<span class="comment">//y为root节点</span></span><br><span class="line">    &#123;</span><br><span class="line">        T-&gt;root = x;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">else</span> <span class="keyword">if</span>(y == y-&gt;parent-&gt;left)<span class="comment">//y为左节点</span></span><br><span class="line">    &#123;</span><br><span class="line">        y-&gt;parent-&gt;left = x;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">else</span><span class="comment">//y为右节点</span></span><br><span class="line">    &#123;</span><br><span class="line">        y-&gt;parent-&gt;right = x;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">//3</span></span><br><span class="line">    x-&gt;right = y;</span><br><span class="line">    y-&gt;parent = x;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+
+<p>左旋右旋代码基本相同，看着上面的图就很容易理解了</p>
+<h2 id="插入"><a href="#插入" class="headerlink" title="插入"></a>插入</h2><p>插入操作为基本的二叉排序树的插入，即比较当前节点与插入节点的值，大的走右边，小的走左边</p>
+<p>重点为直接插入之后的上色极其调整</p>
+<p>红黑树在插入之前本身就是一颗红黑树</p>
+<p>证明：归纳法</p>
+<p>笔记未整理完，明天继续</p>
+]]></content>
+      <tags>
+        <tag>C/C++</tag>
+      </tags>
+  </entry>
 </search>

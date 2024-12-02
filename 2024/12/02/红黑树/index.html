@@ -19,23 +19,26 @@
     
     <!--- Seo Part-->
     
-    <link rel="canonical" href="http://example.com/2024/11/03/java链表实现/"/>
+    <link rel="canonical" href="http://example.com/2024/12/02/红黑树/"/>
     <meta name="robots" content="index,follow">
     <meta name="googlebot" content="index,follow">
     <meta name="revisit-after" content="1 days">
     
-        <meta name="description" content="Java 链表实现代码123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354555657585960616263646566676869707172737475767778798081828384858687888990919293949596979899">
+        <meta name="description" content="红黑树定义（叶子节点包含空节点） 1.每个节点是红的或者黑的 2.根节点是黑的 3.每个叶子节点是黑的 4.如果一个节点是红的，则他的两个儿子都是黑的 5.对每个节点，从该节点到其子孙节点的所有路径上包含相同数目的黑节点  节点定义12345678910111213141516171819typedef struct rtbtree&#123;  int key;  void* value;  s">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Java链表实现">
-<meta property="og:url" content="http://example.com/2024/11/03/Java%E9%93%BE%E8%A1%A8%E5%AE%9E%E7%8E%B0/index.html">
+<meta property="og:title" content="红黑树c语言实现">
+<meta property="og:url" content="http://example.com/2024/12/02/%E7%BA%A2%E9%BB%91%E6%A0%91/index.html">
 <meta property="og:site_name" content="Blog">
-<meta property="og:description" content="Java 链表实现代码123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354555657585960616263646566676869707172737475767778798081828384858687888990919293949596979899">
+<meta property="og:description" content="红黑树定义（叶子节点包含空节点） 1.每个节点是红的或者黑的 2.根节点是黑的 3.每个叶子节点是黑的 4.如果一个节点是红的，则他的两个儿子都是黑的 5.对每个节点，从该节点到其子孙节点的所有路径上包含相同数目的黑节点  节点定义12345678910111213141516171819typedef struct rtbtree&#123;  int key;  void* value;  s">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2024-11-02T16:00:00.000Z">
-<meta property="article:modified_time" content="2024-11-05T09:53:52.370Z">
+<meta property="og:image" content="http://example.com/images/rbtree/define.jpg">
+<meta property="og:image" content="http://example.com/images/rbtree/%E6%97%8B%E8%BD%AC.png">
+<meta property="article:published_time" content="2024-12-02T10:20:54.000Z">
+<meta property="article:modified_time" content="2024-12-02T14:58:19.258Z">
 <meta property="article:author" content="lkpalu">
-<meta property="article:tag" content="Java">
+<meta property="article:tag" content="C&#x2F;C++">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://example.com/images/rbtree/define.jpg">
     
     
     <!--- Icon Part-->
@@ -47,7 +50,7 @@
     
     <title>
         
-            Java链表实现 | lkpalu 个人博客
+            红黑树c语言实现 | lkpalu 个人博客
         
     </title>
 
@@ -235,7 +238,7 @@
         <div class="article-title relative w-full">
             
                 <div class="w-full flex items-center pt-6 justify-start">
-                    <h1 class="article-title-regular text-second-text-color tracking-tight text-4xl md:text-6xl font-semibold px-2 sm:px-6 md:px-8 py-3">Java链表实现</h1>
+                    <h1 class="article-title-regular text-second-text-color tracking-tight text-4xl md:text-6xl font-semibold px-2 sm:px-6 md:px-8 py-3">红黑树c语言实现</h1>
                 </div>
             
             </div>
@@ -256,35 +259,19 @@
                         <div class="article-meta-info">
     <span class="article-date article-meta-item">
         <i class="fa-regular fa-pen-fancy"></i>&nbsp;
-        <span class="desktop">2024-11-03</span>
-        <span class="mobile">2024-11-03</span>
+        <span class="desktop">2024-12-02 18:20:54</span>
+        <span class="mobile">2024-12-02 18:20:54</span>
         <span class="hover-info">创建</span>
     </span>
     
         <span class="article-date article-meta-item">
             <i class="fa-regular fa-wrench"></i>&nbsp;
-            <span class="desktop">2024-11-05 17:53:52</span>
-            <span class="mobile">2024-11-05 17:53:52</span>
+            <span class="desktop">2024-12-02 22:58:19</span>
+            <span class="mobile">2024-12-02 22:58:19</span>
             <span class="hover-info">更新</span>
         </span>
     
 
-    
-        <span class="article-categories article-meta-item">
-            <i class="fa-regular fa-folders"></i>&nbsp;
-            <ul>
-                
-                
-                    
-                        
-                        <li>
-                            <a href="/categories/%E6%8A%80%E6%9C%AF%E5%90%91/">技术向</a>&nbsp;
-                        </li>
-                    
-                    
-                
-            </ul>
-        </span>
     
     
         <span class="article-tags article-meta-item">
@@ -292,7 +279,7 @@
             <ul>
                 
                     <li>
-                        <a href="/tags/Java/">Java</a>&nbsp;
+                        <a href="/tags/C-C/">C/C++</a>&nbsp;
                     </li>
                 
             </ul>
@@ -318,9 +305,53 @@
 
 
         <div class="article-content markdown-body px-2 sm:px-6 md:px-8 pb-8">
-            <h1 id="Java-链表实现"><a href="#Java-链表实现" class="headerlink" title="Java 链表实现"></a>Java 链表实现</h1><h4 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h4><div class="highlight-container" data-rel="Java"><figure class="iseeu highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> LinkList;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Node</span> &#123;</span><br><span class="line">    <span class="type">int</span> data;</span><br><span class="line">    Node next;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="title function_">Node</span><span class="params">(<span class="type">int</span> data)</span> &#123;</span><br><span class="line">        <span class="built_in">this</span>.data = data;</span><br><span class="line">        <span class="built_in">this</span>.next = <span class="literal">null</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">Init</span><span class="params">(Node head, <span class="type">int</span> length)</span> &#123;</span><br><span class="line">        <span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">0</span>;</span><br><span class="line">        <span class="type">Node</span> <span class="variable">newHead</span> <span class="operator">=</span> head;</span><br><span class="line">        <span class="keyword">while</span> (i &lt; length) &#123;</span><br><span class="line">            <span class="type">Node</span> <span class="variable">tmp</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Node</span>(<span class="number">0</span>);</span><br><span class="line">            tmp.next = <span class="literal">null</span>;</span><br><span class="line">            newHead.next = tmp;</span><br><span class="line">            newHead = newHead.next;</span><br><span class="line">            i++;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">Print</span><span class="params">(Node head)</span> &#123;</span><br><span class="line">        <span class="type">Node</span> <span class="variable">newHead</span> <span class="operator">=</span> head;</span><br><span class="line">        <span class="keyword">while</span> (newHead != <span class="literal">null</span>) &#123;</span><br><span class="line">            System.out.println(newHead.data);</span><br><span class="line">            newHead = newHead.next;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">Insert</span><span class="params">(Node head, <span class="type">int</span> index, <span class="type">int</span> data)</span> &#123;</span><br><span class="line">        <span class="type">Node</span> <span class="variable">newHead</span> <span class="operator">=</span> head;</span><br><span class="line">        <span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">while</span> (i &lt; index &amp;&amp; newHead != <span class="literal">null</span>) &#123;</span><br><span class="line">            newHead = newHead.next;</span><br><span class="line">            i++;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span> (newHead == <span class="literal">null</span>) &#123;</span><br><span class="line">            System.out.println(<span class="string">&quot;索引超过长度&quot;</span>);</span><br><span class="line">            <span class="keyword">return</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="type">Node</span> <span class="variable">tmp</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Node</span>(data);</span><br><span class="line">        tmp.next = newHead.next;</span><br><span class="line">        newHead.next = tmp;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="type">int</span> <span class="title function_">Delete</span><span class="params">(Node head, <span class="type">int</span> index)</span> &#123;</span><br><span class="line">        <span class="type">int</span> res;</span><br><span class="line">        <span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">1</span>;</span><br><span class="line">        <span class="type">Node</span> <span class="variable">newHead</span> <span class="operator">=</span> head;</span><br><span class="line">        <span class="keyword">while</span> (i &lt; index &amp;&amp; newHead != <span class="literal">null</span>) &#123;</span><br><span class="line">            newHead = newHead.next;</span><br><span class="line">            i++;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span> (newHead == <span class="literal">null</span>) &#123;</span><br><span class="line">            System.out.println(<span class="string">&quot;索引超过长度，无法删除&quot;</span>);</span><br><span class="line">            <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        res = newHead.next.data;</span><br><span class="line">        newHead.next = newHead.next.next;</span><br><span class="line">        <span class="keyword">return</span> res;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="type">int</span> <span class="title function_">Find</span><span class="params">(Node head, <span class="type">int</span> index)</span> &#123;</span><br><span class="line">        <span class="type">Node</span> <span class="variable">newHead</span> <span class="operator">=</span> head;</span><br><span class="line">        <span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">while</span> (i &lt; index &amp;&amp; newHead != <span class="literal">null</span>) &#123;</span><br><span class="line">            newHead = newHead.next;</span><br><span class="line">            i++;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span> (newHead == <span class="literal">null</span>) &#123;</span><br><span class="line">            System.out.println(<span class="string">&quot;索引超过长度，无法查找&quot;</span>);</span><br><span class="line">            <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> newHead.data;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">Alter</span><span class="params">(Node head, <span class="type">int</span> index, <span class="type">int</span> data)</span> &#123;</span><br><span class="line">        <span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">0</span>;</span><br><span class="line">        <span class="type">Node</span> <span class="variable">newHead</span> <span class="operator">=</span> head;</span><br><span class="line">        <span class="keyword">while</span> (i &lt; index &amp;&amp; newHead != <span class="literal">null</span>) &#123;</span><br><span class="line">            newHead = newHead.next;</span><br><span class="line">            i++;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span> (newHead == <span class="literal">null</span>) &#123;</span><br><span class="line">            System.out.println(<span class="string">&quot;索引超过长度，无法更改&quot;</span>);</span><br><span class="line">            <span class="keyword">return</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        newHead.data = data;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="type">int</span> <span class="title function_">GetLength</span><span class="params">(Node head)</span> &#123;</span><br><span class="line">        <span class="type">Node</span> <span class="variable">newHead</span> <span class="operator">=</span> head;</span><br><span class="line">        <span class="type">int</span> <span class="variable">length</span> <span class="operator">=</span> -<span class="number">1</span>;</span><br><span class="line">        <span class="keyword">while</span> (newHead != <span class="literal">null</span>) &#123;</span><br><span class="line">            length++;</span><br><span class="line">            newHead = newHead.next;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> length;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+            <h1 id="红黑树"><a href="#红黑树" class="headerlink" title="红黑树"></a>红黑树</h1><h2 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h2><p>（叶子节点包含空节点）</p>
+<p>1.每个节点是红的或者黑的</p>
+<p>2.根节点是黑的</p>
+<p>3.每个叶子节点是黑的</p>
+<p>4.如果一个节点是红的，则他的两个儿子都是黑的</p>
+<p>5.对每个节点，从该节点到其子孙节点的所有路径上包含相同数目的黑节点</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="/images/rbtree/define.jpg"
+                      alt="旋转"
+                ></p>
+<h3 id="节点定义"><a href="#节点定义" class="headerlink" title="节点定义"></a>节点定义</h3><div class="highlight-container" data-rel="C"><figure class="iseeu highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> <span class="title">rtbtree</span>&#123;</span></span><br><span class="line"></span><br><span class="line">  <span class="type">int</span> key;</span><br><span class="line"></span><br><span class="line">  <span class="type">void</span>* value;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">  <span class="class"><span class="keyword">struct</span> <span class="title">rtbtree</span>* <span class="title">left</span>;</span></span><br><span class="line"></span><br><span class="line">  <span class="class"><span class="keyword">struct</span> <span class="title">rtbtree</span>* <span class="title">right</span>;</span></span><br><span class="line"></span><br><span class="line">  <span class="class"><span class="keyword">struct</span> <span class="title">rtbtree</span>* <span class="title">parent</span>;</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">  <span class="type">unsigned</span> <span class="type">char</span> color;</span><br><span class="line"></span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></div>
 
-<p>主要实现了对链表的初始化以及增删查改等，未实现排序，逆序等功能</p>
+
+
+<h3 id="关键节点定义"><a href="#关键节点定义" class="headerlink" title="关键节点定义"></a>关键节点定义</h3><div class="highlight-container" data-rel="C"><figure class="iseeu highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> <span class="title">rbtree</span>&#123;</span></span><br><span class="line">    rbtree_node* root;</span><br><span class="line">    rbtree_node* nil;</span><br><span class="line">&#125;rbtree;</span><br></pre></td></tr></table></figure></div>
+
+<p>这里定义nil节点为所有的叶子节点</p>
+<p>根据上面定义的节点来看，迁移性非常差，做出如下修改</p>
+<div class="highlight-container" data-rel="C"><figure class="iseeu highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">define</span> RBTREE_ENTRY(name,type) \</span></span><br><span class="line"><span class="meta">    struct name&#123;         \</span></span><br><span class="line"><span class="meta">        struct type *left; \</span></span><br><span class="line"><span class="meta">        struct type *right; \</span></span><br><span class="line"><span class="meta">        struct type *parent; \</span></span><br><span class="line"><span class="meta">        unsigned char color; \</span></span><br><span class="line"><span class="meta">    &#125;</span></span><br><span class="line"><span class="keyword">typedef</span> <span class="type">int</span> KEY_TYPE;    </span><br><span class="line"></span><br><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> <span class="title">rbtree_node</span>&#123;</span></span><br><span class="line">    KEY_TYPE key;</span><br><span class="line">    <span class="type">void</span>* value;</span><br><span class="line"><span class="meta">#<span class="keyword">if</span> 0</span></span><br><span class="line">        <span class="class"><span class="keyword">struct</span> <span class="title">type</span> <span class="title">left</span>;</span> </span><br><span class="line">        <span class="class"><span class="keyword">struct</span> <span class="title">type</span> <span class="title">right</span>;</span> </span><br><span class="line">        <span class="class"><span class="keyword">struct</span> <span class="title">type</span> <span class="title">parent</span>;</span> </span><br><span class="line">        <span class="type">unsigned</span> <span class="type">char</span> color; </span><br><span class="line"><span class="meta">#<span class="keyword">else</span></span></span><br><span class="line">    RBTREE_ENTRY(,rbtree_node) node;</span><br><span class="line"><span class="meta">#<span class="keyword">endif</span></span></span><br><span class="line">&#125;rbtree_node;</span><br></pre></td></tr></table></figure></div>
+
+<p>这种定义方法可以帮助定义不同类型的红黑树，以及在线程中减少代码量</p>
+<h2 id="旋转"><a href="#旋转" class="headerlink" title="旋转"></a>旋转</h2><p>用于红黑树性质被破环的时候，需要进行调整，使树重新满足定义</p>
+<p>1.左旋</p>
+<p>2.右旋</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="/images/rbtree/%E6%97%8B%E8%BD%AC.png"
+                      alt="旋转"
+                ></p>
+<p>图中左侧树经过左旋转为右侧，右侧经过左旋转为左侧，左右旋转可逆</p>
+<p>图中的x为上图定义的一个<strong>rbtree_node</strong>，</p>
+<p>左旋中以x作为轴心，右旋以y作为轴心</p>
+<p>左旋代码</p>
+<div class="highlight-container" data-rel="C"><figure class="iseeu highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">void</span> <span class="title function_">retree_left_rotate</span><span class="params">(rbtree *T, rbtree_node *x)</span></span><br><span class="line">&#123;</span><br><span class="line">    rbtree_node *y = x-&gt;right;</span><br><span class="line">    <span class="comment">//1</span></span><br><span class="line">    x-&gt;right = y-&gt;left;</span><br><span class="line">    <span class="keyword">if</span> (y-&gt;left != T-&gt;nil)</span><br><span class="line">    &#123;</span><br><span class="line">        y-&gt;left-&gt;parent = x;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">//2</span></span><br><span class="line">    y-&gt;parent = x-&gt;parent;</span><br><span class="line">    <span class="keyword">if</span> (x-&gt;parent == T-&gt;nil) <span class="comment">// x为root节点</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="comment">// 翻转之后root节点为y</span></span><br><span class="line">        T-&gt;root = y;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">else</span> <span class="keyword">if</span> (x == x-&gt;parent-&gt;left) <span class="comment">// x为左节点</span></span><br><span class="line">    &#123;</span><br><span class="line">        x-&gt;parent-&gt;left = y;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">else</span><span class="comment">// x为右节点</span></span><br><span class="line">    &#123;</span><br><span class="line">        x-&gt;parent-&gt;right = y;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">//3</span></span><br><span class="line">    y-&gt;left = x;</span><br><span class="line">    x-&gt;parent = y;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+
+<p>右旋代码</p>
+<div class="highlight-container" data-rel="C"><figure class="iseeu highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">void</span> <span class="title function_">retree_right_rotate</span><span class="params">(rbtree *T, rbtree_node *y)</span></span><br><span class="line">&#123;</span><br><span class="line">    rbtree_node* x = y-&gt;left;</span><br><span class="line">    <span class="comment">//1</span></span><br><span class="line">    y-&gt;left = x-&gt;right;</span><br><span class="line">    <span class="keyword">if</span>(x != T-&gt;nil)<span class="comment">//x不为叶子节点，叶子节点为nil，不用更改</span></span><br><span class="line">    &#123;</span><br><span class="line">        y-&gt;parent = x;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">//2</span></span><br><span class="line">    x-&gt;parent = y-&gt;parent;</span><br><span class="line">    <span class="keyword">if</span>(y-&gt;parent == T-&gt;nil)<span class="comment">//y为root节点</span></span><br><span class="line">    &#123;</span><br><span class="line">        T-&gt;root = x;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">else</span> <span class="keyword">if</span>(y == y-&gt;parent-&gt;left)<span class="comment">//y为左节点</span></span><br><span class="line">    &#123;</span><br><span class="line">        y-&gt;parent-&gt;left = x;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">else</span><span class="comment">//y为右节点</span></span><br><span class="line">    &#123;</span><br><span class="line">        y-&gt;parent-&gt;right = x;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">//3</span></span><br><span class="line">    x-&gt;right = y;</span><br><span class="line">    y-&gt;parent = x;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+
+<p>左旋右旋代码基本相同，看着上面的图就很容易理解了</p>
+<h2 id="插入"><a href="#插入" class="headerlink" title="插入"></a>插入</h2><p>插入操作为基本的二叉排序树的插入，即比较当前节点与插入节点的值，大的走右边，小的走左边</p>
+<p>重点为直接插入之后的上色极其调整</p>
+<p>红黑树在插入之前本身就是一颗红黑树</p>
+<p>证明：归纳法</p>
+<p>笔记未整理完，明天继续</p>
 
         </div>
 
@@ -328,18 +359,18 @@
             <div class="post-copyright-info w-full my-8 px-2 sm:px-6 md:px-8">
                 <div class="article-copyright-info-container">
     <ul>
-        <li><strong>标题:</strong> Java链表实现</li>
+        <li><strong>标题:</strong> 红黑树c语言实现</li>
         <li><strong>作者:</strong> lkpalu</li>
         <li><strong>创建于
-                :</strong> 2024-11-03 00:00:00</li>
+                :</strong> 2024-12-02 18:20:54</li>
         
             <li>
                 <strong>更新于
-                    :</strong> 2024-11-05 17:53:52
+                    :</strong> 2024-12-02 22:58:19
             </li>
         
         <li>
-            <strong>链接:</strong> https://redefine.ohevan.com/2024/11/03/Java链表实现/
+            <strong>链接:</strong> https://redefine.ohevan.com/2024/12/02/红黑树/
         </li>
         <li>
             <strong>
@@ -361,7 +392,7 @@
             <ul class="post-tags-box text-lg mt-1.5 flex-wrap justify-center flex md:hidden">
                 
                     <li class="tag-item mx-0.5">
-                        <a href="/tags/Java/">#Java</a>&nbsp;
+                        <a href="/tags/C-C/">#C/C++</a>&nbsp;
                     </li>
                 
             </ul>
@@ -372,29 +403,14 @@
         
             <div class="article-nav my-8 flex justify-between items-center px-2 sm:px-6 md:px-8">
                 
-                    <div class="article-prev border-border-color shadow-redefine-flat shadow-shadow-color-2 rounded-medium px-4 py-2 hover:shadow-redefine-flat-hover hover:shadow-shadow-color-2">
-                        <a class="prev"
-                        rel="prev"
-                        href="/2024/11/04/Go%E7%9A%84ai%E5%AF%B9%E8%AF%9D%E7%BD%91%E9%A1%B5%E8%AF%A6%E8%A7%A3-%E7%AC%AC%E4%B8%80%E5%A4%A9/"
-                        >
-                            <span class="left arrow-icon flex justify-center items-center">
-                                <i class="fa-solid fa-chevron-left"></i>
-                            </span>
-                            <span class="title flex justify-center items-center">
-                                <span class="post-nav-title-item">Go的ai对话网页详解-第一天</span>
-                                <span class="post-nav-item">上一篇</span>
-                            </span>
-                        </a>
-                    </div>
-                
                 
                     <div class="article-next border-border-color shadow-redefine-flat shadow-shadow-color-2 rounded-medium px-4 py-2 hover:shadow-redefine-flat-hover hover:shadow-shadow-color-2">
                         <a class="next"
                         rel="next"
-                        href="/2024/11/03/Java%E9%93%BE%E8%A1%A8%E6%8B%93%E5%B1%95-%E6%8E%92%E5%BA%8F%EF%BC%8C%E7%BF%BB%E8%BD%AC/"
+                        href="/2024/11/19/lk-%E6%9C%AC%E5%9C%B0%E9%9F%B3%E4%B9%90%E6%92%AD%E6%94%BE%E5%99%A8/"
                         >
                             <span class="title flex justify-center items-center">
-                                <span class="post-nav-title-item">Java链表拓展--排序，翻转</span>
+                                <span class="post-nav-title-item">lk-本地音乐播放器</span>
                                 <span class="post-nav-item">下一篇</span>
                             </span>
                             <span class="right arrow-icon flex justify-center items-center">
@@ -473,8 +489,8 @@
             <div class="post-toc-wrap">
     <div class="post-toc">
         <div class="toc-title">目录</div>
-        <div class="page-title">Java链表实现</div>
-        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Java-%E9%93%BE%E8%A1%A8%E5%AE%9E%E7%8E%B0"><span class="nav-text">Java 链表实现</span></a></li></ol>
+        <div class="page-title">红黑树c语言实现</div>
+        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%BA%A2%E9%BB%91%E6%A0%91"><span class="nav-text">红黑树</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AE%9A%E4%B9%89"><span class="nav-text">定义</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%8A%82%E7%82%B9%E5%AE%9A%E4%B9%89"><span class="nav-text">节点定义</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%85%B3%E9%94%AE%E8%8A%82%E7%82%B9%E5%AE%9A%E4%B9%89"><span class="nav-text">关键节点定义</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%97%8B%E8%BD%AC"><span class="nav-text">旋转</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%8F%92%E5%85%A5"><span class="nav-text">插入</span></a></li></ol></li></ol>
 
     </div>
 </div>

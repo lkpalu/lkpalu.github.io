@@ -284,7 +284,7 @@
 
         <div class="statistics flex justify-around my-2.5">
     <a class="item tag-count-item flex flex-col justify-center items-center w-20" href="/tags">
-        <div class="number text-2xl sm:text-xl text-second-text-color font-semibold">5</div>
+        <div class="number text-2xl sm:text-xl text-second-text-color font-semibold">6</div>
         <div class="label text-third-text-color text-sm">标签</div>
     </a>
     <a class="item tag-count-item flex flex-col justify-center items-center w-20" href="/categories">
@@ -292,7 +292,7 @@
         <div class="label text-third-text-color text-sm">分类</div>
     </a>
     <a class="item tag-count-item flex flex-col justify-center items-center w-20" href="/archives">
-        <div class="number text-2xl sm:text-xl text-second-text-color font-semibold">15</div>
+        <div class="number text-2xl sm:text-xl text-second-text-color font-semibold">16</div>
         <div class="label text-third-text-color text-sm">文章</div>
     </a>
 </div>
@@ -320,12 +320,12 @@
                 <div class="author flex flex-col justify-center my-2.5 mx-0">
     <div class="name">lkpalu</div>
     
-        <div class="label">Lv2</div>
+        <div class="label">Lv3</div>
     
 </div>
                 <div class="statistics flex justify-around my-2.5">
     <a class="item tag-count-item flex flex-col justify-center items-center w-20" href="/tags">
-        <div class="number text-2xl sm:text-xl text-second-text-color font-semibold">5</div>
+        <div class="number text-2xl sm:text-xl text-second-text-color font-semibold">6</div>
         <div class="label text-third-text-color text-sm">标签</div>
     </a>
     <a class="item tag-count-item flex flex-col justify-center items-center w-20" href="/categories">
@@ -333,7 +333,7 @@
         <div class="label text-third-text-color text-sm">分类</div>
     </a>
     <a class="item tag-count-item flex flex-col justify-center items-center w-20" href="/archives">
-        <div class="number text-2xl sm:text-xl text-second-text-color font-semibold">15</div>
+        <div class="number text-2xl sm:text-xl text-second-text-color font-semibold">16</div>
         <div class="label text-third-text-color text-sm">文章</div>
     </a>
 </div>
@@ -350,6 +350,65 @@
                 
                     <div class="home-content-container">
     <ul class="home-article-list">
+        
+            <li class="home-article-item">
+
+                
+
+                
+
+                
+                <div class="flex flex-col gap-5 px-7 pb-7 pt-7">
+                    <h3 class="home-article-title">
+                        <a href="/2024/12/02/%E7%BA%A2%E9%BB%91%E6%A0%91/">
+                            红黑树c语言实现
+                        </a>
+                    </h3>
+
+                    <div class="home-article-content markdown-body">
+                        
+                            
+                            红黑树定义（叶子节点包含空节点）
+1.每个节点是红的或者黑的
+2.根节点是黑的
+3.每个叶子节点是黑的
+4.如果一个节点是红的，则他的两个儿子都是黑的
+5.对每个节点，从该节点到其子孙节点的所有路径上包含相同数目的黑节点
+
+节点定义12345678910111213141516171819typedef struct rtbtree&#123;  int key;  void* value;...
+                        
+                    </div>
+
+                    <div class="home-article-meta-info-container">
+    <div class="home-article-meta-info">
+        <span><i class="fa-solid fa-calendars"></i>&nbsp;
+            <span class="home-article-date" data-date="Mon Dec 02 2024 18:20:54 GMT+0800">
+                
+                    2024-12-02
+                
+            </span>
+        </span>
+        
+        
+            <span class="home-article-tag">
+                <i class="fa-solid fa-tags"></i>&nbsp;
+                <ul>
+                    
+                        <li>
+                            
+                            <a href="/tags/C-C/">C/C++</a>&nbsp;
+                        </li>
+                    
+                </ul>
+            </span>
+        
+    </div>
+
+    <a href="/2024/12/02/%E7%BA%A2%E9%BB%91%E6%A0%91/">阅读全文<span class="seo-reader-text">红黑树c语言实现</span>&nbsp;<i class="fa-solid fa-angle-right"></i></a>
+</div>
+
+                </div>
+            </li>
         
             <li class="home-article-item">
 
@@ -881,75 +940,6 @@ enum1234enum Test&#123;  A = 0;  B...
                 </div>
             </li>
         
-            <li class="home-article-item">
-
-                
-
-                
-
-                
-                <div class="flex flex-col gap-5 px-7 pb-7 pt-7">
-                    <h3 class="home-article-title">
-                        <a href="/2024/11/06/Go%E7%9A%84ai%E5%AF%B9%E8%AF%9D%E7%BD%91%E9%A1%B5%E8%AF%A6%E8%A7%A3-%E7%AC%AC%E4%BA%8C%E5%A4%A9/">
-                            Go的ai对话网页详解-第二天
-                        </a>
-                    </h3>
-
-                    <div class="home-article-content markdown-body">
-                        
-                            
-                            第二天 – Dochat回调函数详解先把函数贴上来
-1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950func (this *Chat) Dochat(c *gin.Context) &#123;    var body model.Chat    err :=...
-                        
-                    </div>
-
-                    <div class="home-article-meta-info-container">
-    <div class="home-article-meta-info">
-        <span><i class="fa-solid fa-calendars"></i>&nbsp;
-            <span class="home-article-date" data-date="Wed Nov 06 2024 12:29:15 GMT+0800">
-                
-                    2024-11-06
-                
-            </span>
-        </span>
-        
-            <span class="home-article-category">
-                <i class="fa-solid fa-folders"></i>&nbsp;
-            <ul>
-                
-                
-                    
-                        
-                        <li>
-                            <a href="/categories/%E6%8A%80%E6%9C%AF%E5%90%91/">技术向</a>&nbsp;
-                        </li>
-                    
-                    
-                
-            </ul>
-        </span>
-        
-        
-            <span class="home-article-tag">
-                <i class="fa-solid fa-tags"></i>&nbsp;
-                <ul>
-                    
-                        <li>
-                            
-                            <a href="/tags/Go/">Go</a>&nbsp;
-                        </li>
-                    
-                </ul>
-            </span>
-        
-    </div>
-
-    <a href="/2024/11/06/Go%E7%9A%84ai%E5%AF%B9%E8%AF%9D%E7%BD%91%E9%A1%B5%E8%AF%A6%E8%A7%A3-%E7%AC%AC%E4%BA%8C%E5%A4%A9/">阅读全文<span class="seo-reader-text">Go的ai对话网页详解-第二天</span>&nbsp;<i class="fa-solid fa-angle-right"></i></a>
-</div>
-
-                </div>
-            </li>
-        
     </ul>
 
     <div class="home-paginator px-7 py-5">
@@ -984,7 +974,7 @@ enum1234enum Test&#123;  A = 0;  B...
                 
                 <p class="post-count space-x-0.5">
                     <span>
-                        共撰写了 15 篇文章
+                        共撰写了 16 篇文章
                     </span>
                     
                 </p>
