@@ -292,7 +292,7 @@
         <div class="label text-third-text-color text-sm">分类</div>
     </a>
     <a class="item tag-count-item flex flex-col justify-center items-center w-20" href="/archives">
-        <div class="number text-2xl sm:text-xl text-second-text-color font-semibold">18</div>
+        <div class="number text-2xl sm:text-xl text-second-text-color font-semibold">19</div>
         <div class="label text-third-text-color text-sm">文章</div>
     </a>
 </div>
@@ -333,7 +333,7 @@
         <div class="label text-third-text-color text-sm">分类</div>
     </a>
     <a class="item tag-count-item flex flex-col justify-center items-center w-20" href="/archives">
-        <div class="number text-2xl sm:text-xl text-second-text-color font-semibold">18</div>
+        <div class="number text-2xl sm:text-xl text-second-text-color font-semibold">19</div>
         <div class="label text-third-text-color text-sm">文章</div>
     </a>
 </div>
@@ -350,6 +350,62 @@
                 
                     <div class="home-content-container">
     <ul class="home-article-list">
+        
+            <li class="home-article-item">
+
+                
+
+                
+
+                
+                <div class="flex flex-col gap-5 px-7 pb-7 pt-7">
+                    <h3 class="home-article-title">
+                        <a href="/2024/12/05/%E5%B8%83%E9%9A%86%E8%BF%87%E6%BB%A4%E5%99%A8%E7%AE%80%E5%8D%95%E5%AE%9E%E7%8E%B0/">
+                            布隆过滤器简单实现
+                        </a>
+                    </h3>
+
+                    <div class="home-article-content markdown-body">
+                        
+                            
+                            引言布隆过滤器是一种通过散列表，快速判断元素是否存在的一种结构，这篇重要是简单说明一下布隆过滤器是什么以及他的简单实现
+内部结构布隆过滤器其内部其实就是一个位图，这个位图非常大，是存储数据的几倍
+位图简单来说就是不存储数值，每个存储单元只存储0&#x2F;1的数组
+c语言中可以用char的数组进行实现
+数据在插入或者查询时会经过多个哈希函数的运算，得到的结果求模，最后得到每个位置的索引，将索...
+                        
+                    </div>
+
+                    <div class="home-article-meta-info-container">
+    <div class="home-article-meta-info">
+        <span><i class="fa-solid fa-calendars"></i>&nbsp;
+            <span class="home-article-date" data-date="Thu Dec 05 2024 21:54:35 GMT+0800">
+                
+                    2024-12-05
+                
+            </span>
+        </span>
+        
+        
+            <span class="home-article-tag">
+                <i class="fa-solid fa-tags"></i>&nbsp;
+                <ul>
+                    
+                        <li>
+                            
+                            <a href="/tags/C-C/">C/C++</a>&nbsp;
+                        </li>
+                    
+                </ul>
+            </span>
+        
+    </div>
+
+    <a href="/2024/12/05/%E5%B8%83%E9%9A%86%E8%BF%87%E6%BB%A4%E5%99%A8%E7%AE%80%E5%8D%95%E5%AE%9E%E7%8E%B0/">阅读全文<span class="seo-reader-text">布隆过滤器简单实现</span>&nbsp;<i class="fa-solid fa-angle-right"></i></a>
+</div>
+
+                </div>
+            </li>
         
             <li class="home-article-item">
 
@@ -847,75 +903,6 @@ enum1234enum Test&#123;  A = 0;  B...
                 </div>
             </li>
         
-            <li class="home-article-item">
-
-                
-
-                
-
-                
-                <div class="flex flex-col gap-5 px-7 pb-7 pt-7">
-                    <h3 class="home-article-title">
-                        <a href="/2024/11/07/GRPC%E5%88%9D%E6%8E%A2-proto%E6%96%87%E4%BB%B6%E7%9A%84%E7%BC%96%E5%86%99/">
-                            GRPC初探--proto文件的编写
-                        </a>
-                    </h3>
-
-                    <div class="home-article-content markdown-body">
-                        
-                            
-                            语法proto文件为protoc buffer文件，这是一种高效的文件格式，由Google出品，现在流行的语法为proto3，
-123456789101112131415syntax = &quot;proto3&quot;;option go_package = &quot;github.com/lkpalu/grpc-go-example/proto&quot;;package Serv...
-                        
-                    </div>
-
-                    <div class="home-article-meta-info-container">
-    <div class="home-article-meta-info">
-        <span><i class="fa-solid fa-calendars"></i>&nbsp;
-            <span class="home-article-date" data-date="Thu Nov 07 2024 15:05:00 GMT+0800">
-                
-                    2024-11-07
-                
-            </span>
-        </span>
-        
-            <span class="home-article-category">
-                <i class="fa-solid fa-folders"></i>&nbsp;
-            <ul>
-                
-                
-                    
-                        
-                        <li>
-                            <a href="/categories/%E6%8A%80%E6%9C%AF%E5%90%91/">技术向</a>&nbsp;
-                        </li>
-                    
-                    
-                
-            </ul>
-        </span>
-        
-        
-            <span class="home-article-tag">
-                <i class="fa-solid fa-tags"></i>&nbsp;
-                <ul>
-                    
-                        <li>
-                            
-                            <a href="/tags/Go/">Go</a>&nbsp;
-                        </li>
-                    
-                </ul>
-            </span>
-        
-    </div>
-
-    <a href="/2024/11/07/GRPC%E5%88%9D%E6%8E%A2-proto%E6%96%87%E4%BB%B6%E7%9A%84%E7%BC%96%E5%86%99/">阅读全文<span class="seo-reader-text">GRPC初探--proto文件的编写</span>&nbsp;<i class="fa-solid fa-angle-right"></i></a>
-</div>
-
-                </div>
-            </li>
-        
     </ul>
 
     <div class="home-paginator px-7 py-5">
@@ -950,7 +937,7 @@ enum1234enum Test&#123;  A = 0;  B...
                 
                 <p class="post-count space-x-0.5">
                     <span>
-                        共撰写了 18 篇文章
+                        共撰写了 19 篇文章
                     </span>
                     
                 </p>
