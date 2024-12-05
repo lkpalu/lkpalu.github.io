@@ -440,7 +440,7 @@
 
 ]]></content>
       <tags>
-        <tag>C</tag>
+        <tag>C/C++</tag>
       </tags>
   </entry>
   <entry>
@@ -453,7 +453,7 @@
 <p>一请求一线程<br>缺点：不利于多并发，c10k问题</p>
 ]]></content>
       <tags>
-        <tag>C</tag>
+        <tag>C/C++</tag>
       </tags>
   </entry>
 </search>
