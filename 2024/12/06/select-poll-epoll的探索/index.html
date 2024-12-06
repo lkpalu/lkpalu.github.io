@@ -19,22 +19,22 @@
     
     <!--- Seo Part-->
     
-    <link rel="canonical" href="http://example.com/2024/11/10/proto文件类型补充/"/>
+    <link rel="canonical" href="http://example.com/2024/12/06/select-poll-epoll的探索/"/>
     <meta name="robots" content="index,follow">
     <meta name="googlebot" content="index,follow">
     <meta name="revisit-after" content="1 days">
     
-        <meta name="description" content="proto文件类型及语法proto文件的类型上次写了message和service，此外还有map和enum 代码如下 map12345message Pong&#123;  string message &#x3D; 1;  Test t &#x3D; 2;  map&lt;string, int32&gt; m &#x3D; 3;&#125;    enum1234enum Test&#123;  A &#x3D; 0;  B &#x3D;">
+        <meta name="description" content="select今天写的这三个主要是为了解决普通网络编程中一个连接创建一个线程处理的方式，这种方式不适合高并发的情况，select可以在单线程中处理多个请求 缺点： 1.参数较多，有五个参数，都需要单独进行管理 2.每次吧待检测io集合，复制进内核，影响性能 3.对io的数量有限制，最大1024 12345678910111213141516171819202122232425262728293031">
 <meta property="og:type" content="article">
-<meta property="og:title" content="proto文件类型补充">
-<meta property="og:url" content="http://example.com/2024/11/10/proto%E6%96%87%E4%BB%B6%E7%B1%BB%E5%9E%8B%E8%A1%A5%E5%85%85/index.html">
+<meta property="og:title" content="select,poll,epoll的探索">
+<meta property="og:url" content="http://example.com/2024/12/06/select-poll-epoll%E7%9A%84%E6%8E%A2%E7%B4%A2/index.html">
 <meta property="og:site_name" content="Blog">
-<meta property="og:description" content="proto文件类型及语法proto文件的类型上次写了message和service，此外还有map和enum 代码如下 map12345message Pong&#123;  string message &#x3D; 1;  Test t &#x3D; 2;  map&lt;string, int32&gt; m &#x3D; 3;&#125;    enum1234enum Test&#123;  A &#x3D; 0;  B &#x3D;">
+<meta property="og:description" content="select今天写的这三个主要是为了解决普通网络编程中一个连接创建一个线程处理的方式，这种方式不适合高并发的情况，select可以在单线程中处理多个请求 缺点： 1.参数较多，有五个参数，都需要单独进行管理 2.每次吧待检测io集合，复制进内核，影响性能 3.对io的数量有限制，最大1024 12345678910111213141516171819202122232425262728293031">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2024-11-10T13:56:19.000Z">
-<meta property="article:modified_time" content="2024-11-10T14:03:25.709Z">
+<meta property="article:published_time" content="2024-12-06T08:02:14.000Z">
+<meta property="article:modified_time" content="2024-12-06T08:15:00.372Z">
 <meta property="article:author" content="lkpalu">
-<meta property="article:tag" content="Go">
+<meta property="article:tag" content="C&#x2F;C++">
 <meta name="twitter:card" content="summary">
     
     
@@ -47,7 +47,7 @@
     
     <title>
         
-            proto文件类型补充 | lkpalu 个人博客
+            select,poll,epoll的探索 | lkpalu 个人博客
         
     </title>
 
@@ -235,7 +235,7 @@
         <div class="article-title relative w-full">
             
                 <div class="w-full flex items-center pt-6 justify-start">
-                    <h1 class="article-title-regular text-second-text-color tracking-tight text-4xl md:text-6xl font-semibold px-2 sm:px-6 md:px-8 py-3">proto文件类型补充</h1>
+                    <h1 class="article-title-regular text-second-text-color tracking-tight text-4xl md:text-6xl font-semibold px-2 sm:px-6 md:px-8 py-3">select,poll,epoll的探索</h1>
                 </div>
             
             </div>
@@ -256,15 +256,15 @@
                         <div class="article-meta-info">
     <span class="article-date article-meta-item">
         <i class="fa-regular fa-pen-fancy"></i>&nbsp;
-        <span class="desktop">2024-11-10 21:56:19</span>
-        <span class="mobile">2024-11-10 21:56:19</span>
+        <span class="desktop">2024-12-06 16:02:14</span>
+        <span class="mobile">2024-12-06 16:02:14</span>
         <span class="hover-info">创建</span>
     </span>
     
         <span class="article-date article-meta-item">
             <i class="fa-regular fa-wrench"></i>&nbsp;
-            <span class="desktop">2024-11-10 22:03:25</span>
-            <span class="mobile">2024-11-10 22:03:25</span>
+            <span class="desktop">2024-12-06 16:15</span>
+            <span class="mobile">2024-12-06 16:15</span>
             <span class="hover-info">更新</span>
         </span>
     
@@ -276,7 +276,7 @@
             <ul>
                 
                     <li>
-                        <a href="/tags/Go/">Go</a>&nbsp;
+                        <a href="/tags/C-C/">C/C++</a>&nbsp;
                     </li>
                 
             </ul>
@@ -302,27 +302,25 @@
 
 
         <div class="article-content markdown-body px-2 sm:px-6 md:px-8 pb-8">
-            <h2 id="proto文件类型及语法"><a href="#proto文件类型及语法" class="headerlink" title="proto文件类型及语法"></a>proto文件类型及语法</h2><p>proto文件的类型上次写了message和service，此外还有map和enum</p>
-<p>代码如下</p>
-<h4 id="map"><a href="#map" class="headerlink" title="map"></a>map</h4><div class="highlight-container" data-rel="Protobuf"><figure class="iseeu highlight protobuf"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">message </span><span class="title class_">Pong</span>&#123;</span><br><span class="line">  <span class="type">string</span> message = <span class="number">1</span>;</span><br><span class="line">  Test t = <span class="number">2</span>;</span><br><span class="line">  map&lt;<span class="type">string</span>, <span class="type">int32</span>&gt; m = <span class="number">3</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+            <h2 id="select"><a href="#select" class="headerlink" title="select"></a>select</h2><p>今天写的这三个主要是为了解决普通网络编程中一个连接创建一个线程处理的方式，这种方式不适合高并发的情况，select可以在单线程中处理多个请求</p>
+<p>缺点：</p>
+<p>1.参数较多，有五个参数，都需要单独进行管理</p>
+<p>2.每次吧待检测io集合，复制进内核，影响性能</p>
+<p>3.对io的数量有限制，最大1024</p>
+<div class="highlight-container" data-rel="C"><figure class="iseeu highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// select</span></span><br><span class="line">    <span class="comment">// int nearby = select(maxfd,rset,wset,eset,time_out);</span></span><br><span class="line">    <span class="comment">// maxfd表示最大的连接序号，用于内部遍历判断该连接是否可读可写</span></span><br><span class="line">    <span class="comment">// rset为可读集合，内部为bit数组</span></span><br><span class="line">    <span class="comment">// wset为可写集合</span></span><br><span class="line">    <span class="comment">// eset为错误集合</span></span><br><span class="line">    <span class="comment">// timeout为超时时间</span></span><br><span class="line">    <span class="comment">// 该函数在请求可读或可写时都会返回，若不可读可写，超时时间后返回</span></span><br><span class="line">    <span class="type">int</span> maxfd = sockfd;</span><br><span class="line">    fd_set rset, rfds;</span><br><span class="line">    FD_ZERO(&amp;rfds);</span><br><span class="line">    FD_SET(sockfd, &amp;rfds);</span><br><span class="line"></span><br><span class="line">    <span class="comment">// int nready = select(maxfd + 1, rset, NULL, NULL, NULL);</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">while</span> (<span class="number">1</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        rset = rfds;</span><br><span class="line">        <span class="type">int</span> nready = select(maxfd + <span class="number">1</span>, &amp;rset, <span class="literal">NULL</span>, <span class="literal">NULL</span>, <span class="literal">NULL</span>);</span><br><span class="line">        <span class="keyword">if</span> (FD_ISSET(sockfd, &amp;rset))</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="class"><span class="keyword">struct</span> <span class="title">sockaddr_in</span> <span class="title">cltaddr</span>;</span></span><br><span class="line">            <span class="built_in">memset</span>(&amp;cltaddr, <span class="number">0</span>, <span class="keyword">sizeof</span>(<span class="keyword">struct</span> sockaddr_in));</span><br><span class="line">            <span class="type">socklen_t</span> len = <span class="keyword">sizeof</span>(<span class="keyword">struct</span> sockaddr_in);</span><br><span class="line">            <span class="type">int</span> clientfd = accept(sockfd, (<span class="keyword">struct</span> sockaddr *)&amp;cltaddr, &amp;len); <span class="comment">// 接收阻塞</span></span><br><span class="line">            maxfd = clientfd;</span><br><span class="line">            FD_SET(clientfd, &amp;rfds);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> i = sockfd + <span class="number">1</span>; i &lt;= maxfd; i++)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">if</span> (FD_ISSET(i, &amp;rset))</span><br><span class="line">            &#123;</span><br><span class="line">                <span class="type">char</span> buf[<span class="number">128</span>] = &#123;<span class="number">0</span>&#125;;</span><br><span class="line"></span><br><span class="line">                <span class="type">int</span> count = recv(i, buf, <span class="number">128</span>, <span class="number">0</span>);</span><br><span class="line">                <span class="keyword">if</span> (count == <span class="number">0</span>)</span><br><span class="line">                &#123;</span><br><span class="line">                    FD_CLR(i, &amp;rfds);</span><br><span class="line">                    close(i);</span><br><span class="line">                    <span class="keyword">break</span>;</span><br><span class="line">                &#125;</span><br><span class="line"></span><br><span class="line">                send(i, buf, count, <span class="number">0</span>);</span><br><span class="line">                <span class="built_in">printf</span>(<span class="string">&quot;clientfd %d,count %d,buffer:%s&quot;</span>, i, count, buf);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure></div>
 
 
 
-<h4 id="enum"><a href="#enum" class="headerlink" title="enum"></a>enum</h4><div class="highlight-container" data-rel="Protobuf"><figure class="iseeu highlight protobuf"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">enum </span><span class="title class_">Test</span>&#123;</span><br><span class="line">  A = <span class="number">0</span>;</span><br><span class="line">  B = <span class="number">1</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+<h2 id="poll"><a href="#poll" class="headerlink" title="poll"></a>poll</h2><p>解决了select参数过多的问题，简化了函数参数，但因为底层仍是select，依然没有解决每次都要复制以及对io有数量限制的问题</p>
+<div class="highlight-container" data-rel="C"><figure class="iseeu highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// int nready = poll(fds, maxfd+1, -1);</span></span><br><span class="line">    <span class="comment">// 简化了select的参数</span></span><br><span class="line">    <span class="comment">// 底层还是select，没用改善select多次复制的缺点</span></span><br><span class="line">    <span class="class"><span class="keyword">struct</span> <span class="title">pollfd</span> <span class="title">fds</span>[1024] =</span> &#123;<span class="number">0</span>&#125;; <span class="comment">// 保持和select最大连接数一致</span></span><br><span class="line"></span><br><span class="line">    fds[sockfd].fd = sockfd;</span><br><span class="line">    fds[sockfd].events = POLLIN;</span><br><span class="line"></span><br><span class="line">    <span class="type">int</span> maxfd = sockfd; <span class="comment">// 非必须，缩短循环次数</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">while</span> (<span class="number">1</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="type">int</span> nready = poll(fds, maxfd + <span class="number">1</span>, <span class="number">-1</span>);</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> (fds[sockfd].revents &amp; POLLIN)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="class"><span class="keyword">struct</span> <span class="title">sockaddr_in</span> <span class="title">cltaddr</span>;</span></span><br><span class="line">            <span class="built_in">memset</span>(&amp;cltaddr, <span class="number">0</span>, <span class="keyword">sizeof</span>(<span class="keyword">struct</span> sockaddr_in));</span><br><span class="line">            <span class="type">socklen_t</span> len = <span class="keyword">sizeof</span>(<span class="keyword">struct</span> sockaddr_in);</span><br><span class="line">            <span class="type">int</span> clientfd = accept(sockfd, (<span class="keyword">struct</span> sockaddr *)&amp;cltaddr, &amp;len); <span class="comment">// 接收阻塞</span></span><br><span class="line">            maxfd = clientfd;</span><br><span class="line">            fds[clientfd].fd = clientfd;</span><br><span class="line">            fds[clientfd].events = POLLIN;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> i = sockfd + <span class="number">1</span>; i &lt;= maxfd; i++)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">if</span> (fds[i].revents &amp; POLLIN)</span><br><span class="line">            &#123;</span><br><span class="line">                <span class="type">char</span> buf[<span class="number">128</span>] = &#123;<span class="number">0</span>&#125;;</span><br><span class="line"></span><br><span class="line">                <span class="type">int</span> count = recv(i, buf, <span class="number">128</span>, <span class="number">0</span>);</span><br><span class="line">                <span class="keyword">if</span> (count == <span class="number">0</span>)</span><br><span class="line">                &#123;</span><br><span class="line">                    fds[i].fd = <span class="number">-1</span>;</span><br><span class="line">                    fds[i].events = <span class="number">0</span>;</span><br><span class="line">                    close(i);</span><br><span class="line">                    <span class="keyword">break</span>;</span><br><span class="line">                &#125;</span><br><span class="line"></span><br><span class="line">                send(i, buf, count, <span class="number">0</span>);</span><br><span class="line">                <span class="built_in">printf</span>(<span class="string">&quot;clientfd %d,count %d,buffer:%s&quot;</span>, i, count, buf);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure></div>
 
 
 
-<p>生成的go语言代码如下</p>
-<div class="highlight-container" data-rel="Go"><figure class="iseeu highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="comment">//enum类型</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">type</span> Test <span class="type">int32</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> (</span><br><span class="line">    Test_A Test = <span class="number">0</span></span><br><span class="line">    Test_B Test = <span class="number">1</span></span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"><span class="comment">// Enum value maps for Test.</span></span><br><span class="line"><span class="keyword">var</span> (</span><br><span class="line">    Test_name = <span class="keyword">map</span>[<span class="type">int32</span>]<span class="type">string</span>&#123;</span><br><span class="line">       <span class="number">0</span>: <span class="string">&quot;A&quot;</span>,</span><br><span class="line">       <span class="number">1</span>: <span class="string">&quot;B&quot;</span>,</span><br><span class="line">    &#125;</span><br><span class="line">    Test_value = <span class="keyword">map</span>[<span class="type">string</span>]<span class="type">int32</span>&#123;</span><br><span class="line">       <span class="string">&quot;A&quot;</span>: <span class="number">0</span>,</span><br><span class="line">       <span class="string">&quot;B&quot;</span>: <span class="number">1</span>,</span><br><span class="line">    &#125;</span><br><span class="line">)</span><br></pre></td></tr></table></figure></div>
+<h2 id="epoll"><a href="#epoll" class="headerlink" title="epoll"></a>epoll</h2><p>相较于select和poll，epoll是事件驱动，支持两种触发方式，LT(水平触发),ET（边沿触发），epoll对与io只需要复制一次，不需要每次都进行复制，大大提高了性能</p>
+<div class="highlight-container" data-rel="C"><figure class="iseeu highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> epfd = epoll_create(<span class="number">1</span>);<span class="comment">// 函数中的size是为了兼容旧的接口，大于一即可，内部已经不再使用传入的size，返回一个用于epoll的句柄</span></span><br><span class="line"></span><br><span class="line">    <span class="class"><span class="keyword">struct</span> <span class="title">epoll_event</span> <span class="title">ev</span>;</span></span><br><span class="line">    ev.events = EPOLLIN;</span><br><span class="line">    ev.data.fd = sockfd;</span><br><span class="line"></span><br><span class="line">    epoll_ctl(epfd, EPOLL_CTL_ADD, sockfd, &amp;ev);<span class="comment">//kv绑定，一个fd绑定一个event</span></span><br><span class="line"></span><br><span class="line">    <span class="class"><span class="keyword">struct</span> <span class="title">epoll_event</span> <span class="title">events</span>[1024] =</span> &#123;<span class="number">0</span>&#125;;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">while</span> (<span class="number">1</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="type">int</span> nready = epoll_wait(epfd, events, <span class="number">1024</span>, <span class="number">-1</span>);</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; nready; i++)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="type">int</span> connfd = events[i].data.fd;</span><br><span class="line"></span><br><span class="line">            <span class="keyword">if</span> (sockfd == connfd)</span><br><span class="line">            &#123;</span><br><span class="line">                <span class="class"><span class="keyword">struct</span> <span class="title">sockaddr_in</span> <span class="title">cltaddr</span>;</span></span><br><span class="line">                <span class="built_in">memset</span>(&amp;cltaddr, <span class="number">0</span>, <span class="keyword">sizeof</span>(<span class="keyword">struct</span> sockaddr_in));</span><br><span class="line">                <span class="type">socklen_t</span> len = <span class="keyword">sizeof</span>(<span class="keyword">struct</span> sockaddr_in);</span><br><span class="line">                <span class="type">int</span> clientfd = accept(sockfd, (<span class="keyword">struct</span> sockaddr *)&amp;cltaddr, &amp;len); <span class="comment">// 接收阻塞</span></span><br><span class="line">                ev.events = EPOLLIN | EPOLLET;<span class="comment">//默认为水平触发，不需要 | EPOOLET</span></span><br><span class="line">                ev.data.fd = clientfd;</span><br><span class="line">                epoll_ctl(epfd, EPOLL_CTL_ADD, clientfd, &amp;ev);</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">else</span> <span class="keyword">if</span> (events[i].events &amp; EPOLLIN)</span><br><span class="line">            &#123;</span><br><span class="line">                <span class="type">char</span> buf[<span class="number">128</span>] = &#123;<span class="number">0</span>&#125;;</span><br><span class="line"></span><br><span class="line">                <span class="type">int</span> count = recv(connfd, buf, <span class="number">128</span>, <span class="number">0</span>);</span><br><span class="line">                <span class="keyword">if</span> (count == <span class="number">0</span>)</span><br><span class="line">                &#123;</span><br><span class="line">                    epoll_ctl(epfd, EPOLL_CTL_DEL, connfd, <span class="literal">NULL</span>);</span><br><span class="line">                    close(i);</span><br><span class="line">                    <span class="keyword">break</span>;</span><br><span class="line">                &#125;</span><br><span class="line"></span><br><span class="line">                send(connfd, buf, count, <span class="number">0</span>);</span><br><span class="line">                <span class="built_in">printf</span>(<span class="string">&quot;clientfd %d,count %d,buffer:%s&quot;</span>, connfd, count, buf);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure></div>
 
-<div class="highlight-container" data-rel="Go"><figure class="iseeu highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//Pong结构体</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">type</span> Pong <span class="keyword">struct</span> &#123;</span><br><span class="line">    state         protoimpl.MessageState</span><br><span class="line">    sizeCache     protoimpl.SizeCache</span><br><span class="line">    unknownFields protoimpl.UnknownFields</span><br><span class="line"></span><br><span class="line">    Message <span class="type">string</span>           <span class="string">`protobuf:&quot;bytes,1,opt,name=message,proto3&quot; json:&quot;message,omitempty&quot;`</span></span><br><span class="line">    T       Test             <span class="string">`protobuf:&quot;varint,2,opt,name=t,proto3,enum=Server.Test&quot; json:&quot;t,omitempty&quot;`</span></span><br><span class="line">    M       <span class="keyword">map</span>[<span class="type">string</span>]<span class="type">int32</span> <span class="string">`protobuf:&quot;bytes,3,rep,name=m,proto3&quot; json:&quot;m,omitempty&quot; protobuf_key:&quot;bytes,1,opt,name=key,proto3&quot; protobuf_val:&quot;varint,2,opt,name=value,proto3&quot;`</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
-
-<p>定义的enum类型会定义为int32的常量</p>
-<h2 id="补充语法"><a href="#补充语法" class="headerlink" title="补充语法"></a>补充语法</h2><p>上次在proto中未提到import，</p>
-<p>proto中也支持import导入其他文件中定义的数据类型</p>
-<div class="highlight-container" data-rel="Protobuf"><figure class="iseeu highlight protobuf"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> <span class="string">&quot;base.proto&quot;</span>;</span><br><span class="line"><span class="keyword">import</span> <span class="string">&quot;google/protobuf/empty.proto&quot;</span>;</span><br></pre></td></tr></table></figure></div>
-
-<h4 id="注意"><a href="#注意" class="headerlink" title="注意"></a>注意</h4><p>在生成代码时需要同时为多个proto文件生成代码，否则会出现找不到数据类型的情况</p>
+<p>水平触发：读取多次，直到读不到数据</p>
+<p>边沿触发：只读取一次，下次发送时，从原先数据位读取后一位开始读取数据</p>
 
         </div>
 
@@ -330,18 +328,18 @@
             <div class="post-copyright-info w-full my-8 px-2 sm:px-6 md:px-8">
                 <div class="article-copyright-info-container">
     <ul>
-        <li><strong>标题:</strong> proto文件类型补充</li>
+        <li><strong>标题:</strong> select,poll,epoll的探索</li>
         <li><strong>作者:</strong> lkpalu</li>
         <li><strong>创建于
-                :</strong> 2024-11-10 21:56:19</li>
+                :</strong> 2024-12-06 16:02:14</li>
         
             <li>
                 <strong>更新于
-                    :</strong> 2024-11-10 22:03:25
+                    :</strong> 2024-12-06 16:15:00
             </li>
         
         <li>
-            <strong>链接:</strong> https://redefine.ohevan.com/2024/11/10/proto文件类型补充/
+            <strong>链接:</strong> https://redefine.ohevan.com/2024/12/06/select-poll-epoll的探索/
         </li>
         <li>
             <strong>
@@ -363,7 +361,7 @@
             <ul class="post-tags-box text-lg mt-1.5 flex-wrap justify-center flex md:hidden">
                 
                     <li class="tag-item mx-0.5">
-                        <a href="/tags/Go/">#Go</a>&nbsp;
+                        <a href="/tags/C-C/">#C/C++</a>&nbsp;
                     </li>
                 
             </ul>
@@ -374,29 +372,14 @@
         
             <div class="article-nav my-8 flex justify-between items-center px-2 sm:px-6 md:px-8">
                 
-                    <div class="article-prev border-border-color shadow-redefine-flat shadow-shadow-color-2 rounded-medium px-4 py-2 hover:shadow-redefine-flat-hover hover:shadow-shadow-color-2">
-                        <a class="prev"
-                        rel="prev"
-                        href="/2024/11/12/Java%E6%A0%88%E4%B8%8E%E9%98%9F%E5%88%97%E7%9A%84%E5%AE%9E%E7%8E%B0/"
-                        >
-                            <span class="left arrow-icon flex justify-center items-center">
-                                <i class="fa-solid fa-chevron-left"></i>
-                            </span>
-                            <span class="title flex justify-center items-center">
-                                <span class="post-nav-title-item">Java栈与队列的实现</span>
-                                <span class="post-nav-item">上一篇</span>
-                            </span>
-                        </a>
-                    </div>
-                
                 
                     <div class="article-next border-border-color shadow-redefine-flat shadow-shadow-color-2 rounded-medium px-4 py-2 hover:shadow-redefine-flat-hover hover:shadow-shadow-color-2">
                         <a class="next"
                         rel="next"
-                        href="/2024/11/07/GRPC%E5%88%9D%E6%8E%A2-%E7%AE%80%E5%8D%95%E5%AE%A2%E6%88%B7%E7%AB%AF%EF%BC%8C%E6%9C%8D%E5%8A%A1%E7%AB%AF%E7%BC%96%E5%86%99/"
+                        href="/2024/12/05/%E5%B8%83%E9%9A%86%E8%BF%87%E6%BB%A4%E5%99%A8%E7%AE%80%E5%8D%95%E5%AE%9E%E7%8E%B0/"
                         >
                             <span class="title flex justify-center items-center">
-                                <span class="post-nav-title-item">GRPC初探--简单客户端，服务端编写</span>
+                                <span class="post-nav-title-item">布隆过滤器简单实现</span>
                                 <span class="post-nav-item">下一篇</span>
                             </span>
                             <span class="right arrow-icon flex justify-center items-center">
@@ -475,8 +458,8 @@
             <div class="post-toc-wrap">
     <div class="post-toc">
         <div class="toc-title">目录</div>
-        <div class="page-title">proto文件类型补充</div>
-        <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#proto%E6%96%87%E4%BB%B6%E7%B1%BB%E5%9E%8B%E5%8F%8A%E8%AF%AD%E6%B3%95"><span class="nav-text">proto文件类型及语法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%A1%A5%E5%85%85%E8%AF%AD%E6%B3%95"><span class="nav-text">补充语法</span></a></li></ol>
+        <div class="page-title">select,poll,epoll的探索</div>
+        <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#select"><span class="nav-text">select</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#poll"><span class="nav-text">poll</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#epoll"><span class="nav-text">epoll</span></a></li></ol>
 
     </div>
 </div>
